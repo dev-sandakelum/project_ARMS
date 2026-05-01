@@ -27,7 +27,8 @@ CREATE TABLE User (
 CREATE TABLE Student(
     reg_no VARCHAR(20) PRIMARY KEY AUTO_INCRMENT,
     status VARCHAR(30),
-    batch VARCHAR(10)
+    batch VARCHAR(10),
+    user_id INT
 );
 
 --3. create Dean table
@@ -198,5 +199,57 @@ CREATE TABLE Final_Mark(
 );
 
 
+--Inheritence links to User table
+
+ALTER TABLE Student ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
+ALTER TABLE Dean ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
+ALTER TABLE Admin ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
+ALTER TABLE TO_Officer ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
+ALTER TABLE Lecturer ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
 
 
+-- Department and Course links
+
+ALTER TABLE Department ADD FOREIGN KEY (Dean_id) REFERENCES Dean(dean_id);
+ALTER TABLE Department ADD FOREIGN KEY (admin_id) REFERENCES Admin(admin_id);
+ALTER TABLE Course_Unit ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
+
+
+-- Multi-valued attributes and many-to-many relationships
+
+ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
+ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
+ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (lecturer_id) REFERENCES Lecturer(lecturer_id);
+ALTER TABLE Student_Course_Unit ADD FOREIGN KEY (reg_no) REFERENCES Student(reg_no);
+ALTER TABLE Student_Course_Unit ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
+
+
+-- Session and Attendance
+ALTER TABLE Session ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
+ALTER TABLE Attendance_Record ADD FOREIGN KEY (session_id) REFERENCES Session(session_id);
+ALTER TABLE Attendance_Record ADD FOREIGN KEY (reg_no) REFERENCES Student(reg_no);
+ALTER TABLE Attendance_Record ADD FOREIGN KEY (FR_to_id) REFERENCES TO_Officer(to_id);
+
+
+-- Assessments and Marks
+
+ALTER TABLE Assignment ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
+ALTER TABLE Student_Marks ADD FOREIGN KEY (reg_no) REFERENCES Student(reg_no);
+ALTER TABLE Student_Marks ADD FOREIGN KEY (Assignment_id) REFERENCES Assignment(Assignment_id);
+
+
+-- Medical and Coverage
+
+ALTER TABLE Medical ADD FOREIGN KEY (session_id) REFERENCES Session(session_id);
+ALTER TABLE Medical ADD FOREIGN KEY (department_id) REFERENCES Department(Department_id);
+ALTER TABLE Medical ADD FOREIGN KEY (reg_no) REFERENCES Student(reg_no);
+ALTER TABLE Medical_Cover_Date ADD FOREIGN KEY (medical_id) REFERENCES Medical(medical_id);
+
+
+-- GPA, Eligibility, and Final Marks
+
+ALTER TABLE GPA ADD FOREIGN KEY (reg_no) REFERENCES Student(reg_no);
+ALTER TABLE Eligibility ADD FOREIGN KEY (Student_Id) REFERENCES Student(reg_no);
+ALTER TABLE Eligibility ADD FOREIGN KEY (Course_Id) REFERENCES Course_Unit(course_code);
+ALTER TABLE Final_Mark ADD FOREIGN KEY (Student_Id) REFERENCES Student(reg_no);
+ALTER TABLE Final_Mark ADD FOREIGN KEY (Course_Id) REFERENCES Course_Unit(course_code);
