@@ -77,7 +77,7 @@ CREATE TABLE Lecturer(
 
 --8. Create Student_contact Table
 CREATE TABLE Student_contact (
-    reg_no VARCHAR(4),
+    reg_no VARCHAR(20),
     contact VARCHAR(15),
     PRIMARY KEY (reg_no,contact)
 );
@@ -85,7 +85,7 @@ CREATE TABLE Student_contact (
 --9. Create Course_Unit table
 
 CREATE TABLE Course_unit(
-    course_code VARCHAR(20),
+    course_code VARCHAR(20) PRIMARY KEY,
     name VARCHAR(100),
     credits INT,
     type VARCHAR(50),
@@ -96,7 +96,7 @@ CREATE TABLE Course_unit(
 
 --10. Create Lecturer_course_unit table
 
-CREATE TABLE Lectuter_Course_Unit(
+CREATE TABLE Lecturer_Course_Unit(
     course_code VARCHAR(20),
     lecturer_id INT,
     PRIMARY KEY(course_code,lecturer_id)
@@ -124,8 +124,8 @@ CREATE TABLE Session(
 
 --13. Create Attendance_record Table
 
-CREATE TABLE Attendence_Record (
-    attendance_id INT PRIMARY KEY,
+CREATE TABLE Attendance_Record (
+    attendance_id INT PRIMARY KEY AUTO_INCREMENT,
     session_id INT,
     reg_no VARCHAR(20),
     status ENUM('Present','Absent'),
@@ -185,8 +185,9 @@ CREATE TABLE GPA(
 CREATE TABLE Eligibility(
     Student_id VARCHAR(20),
     Course_id VARCHAR(20),
-    attendence_eligibily TINYINT(1),
-    ca_eligibilty TINYINT(1)
+    attendance_eligibility TINYINT(1),
+    ca_eligibility TINYINT(1),
+    PRIMARY KEY(Student_id,Course_id)
 );
 
 --20.Create Final_marks Table
@@ -195,7 +196,8 @@ CREATE TABLE Final_Mark(
     student_id VARCHAR(20),
     course_id VARCHAR(20),
     final_mark DECIMAL(5,2),
-    grade VARCHAR(5)
+    grade VARCHAR(5),
+    PRIMARY KEY(student_id,course_id)
 );
 
 
@@ -210,15 +212,17 @@ ALTER TABLE Lecturer ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
 
 -- Department and Course links
 
-ALTER TABLE Department ADD FOREIGN KEY (Dean_id) REFERENCES Dean(dean_id);
+ALTER TABLE Department ADD FOREIGN KEY (Dean_id) REFERENCES Dean(Dean_id);
 ALTER TABLE Department ADD FOREIGN KEY (admin_id) REFERENCES Admin(admin_id);
 ALTER TABLE Course_Unit ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
+ALTER TABLE Dean ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
+ALTER TABLE Admin ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
 
 
 -- Multi-valued attributes and many-to-many relationships
 
 ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
-ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
+
 ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (lecturer_id) REFERENCES Lecturer(lecturer_id);
 ALTER TABLE Student_Course_Unit ADD FOREIGN KEY (reg_no) REFERENCES Student(reg_no);
 ALTER TABLE Student_Course_Unit ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
