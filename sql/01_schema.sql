@@ -25,7 +25,7 @@ CREATE TABLE User (
 --2. Create Student table (inherits from User)
 
 CREATE TABLE Student(
-    reg_no VARCHAR(20) PRIMARY KEY AUTO_INCRMENT,
+    reg_no VARCHAR(20) PRIMARY KEY,
     status VARCHAR(30),
     batch VARCHAR(10),
     user_id INT
@@ -68,9 +68,9 @@ CREATE  TABLE Department(
 --7. Create table Lecturer
 
 CREATE TABLE Lecturer(
-    lecturer_id INT PRIMARY KEY AUTO AUTO_INCREMENT,
+    lecturer_id INT PRIMARY KEY AUTO_INCREMENT,
     designation VARCHAR(100),
-    joined_date DATE
+    joined_date DATE,
     dp_id INT,
     user_id INT
 );
@@ -137,7 +137,7 @@ CREATE TABLE Attendence_Record (
 CREATE TABLE Assignment(
     Assignment_id INT PRIMARY KEY AUTO_INCREMENT,
     Assignment_name VARCHAR(100),
-    type VARHAR(50),
+    type VARCHAR(50),
     max_marks DECIMAL(5,2),
     course_code VARCHAR(20)
 );
@@ -157,7 +157,7 @@ CREATE TABLE Student_Marks(
 CREATE TABLE Medical(
     medical_id INT PRIMARY KEY AUTO_INCREMENT,
     approval TINYINT(1),
-    submitted_date INT,
+    submitted_date DATE,
     session_id INT,
     department_id INT,
     reg_no VARCHAR(20)
