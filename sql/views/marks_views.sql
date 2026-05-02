@@ -1,0 +1,12 @@
+-- ICT1222 Mini Project - Marks Views
+-- Views related to student marks and grades
+
+-- Example view:
+-- CREATE OR REPLACE VIEW student_grade_summary AS
+-- SELECT 
+--     student_id,
+--     AVG(marks) as average_marks,
+--     MAX(marks) as highest_mark,
+--     MIN(marks) as lowest_mark
+-- FROM marks
+-- GROUP BY student_id;
