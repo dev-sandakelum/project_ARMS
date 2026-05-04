@@ -1,8 +1,3 @@
--- ICT1222 Mini Project - Database Schema
--- DDL - Table Creation
-
--- Drop existing tables if they exist
--- DROP TABLE IF EXISTS table_name;
 
 CREATE DATABASE project_ARMS;
 
