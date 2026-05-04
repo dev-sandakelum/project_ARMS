@@ -10,7 +10,7 @@ USE project_ARMS;
 
 
 --1. Create User table
-CREATE TABLE User (
+CREATE TABLE `User` (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     NIC VARCHAR(20),
     address VARCHAR(255),
@@ -42,7 +42,7 @@ CREATE TABLE Dean(
 
 --4.Create Table Admin
 
-CREATE TABLE Admin(
+CREATE TABLE `Admin`(
     admin_id INT PRIMARY KEY AUTO_INCREMENT,
     role_desc VARCHAR(100),
     dp_id INT,
@@ -203,11 +203,11 @@ CREATE TABLE Final_Mark(
 
 --Inheritence links to User table
 
-ALTER TABLE Student ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
-ALTER TABLE Dean ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
-ALTER TABLE Admin ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
-ALTER TABLE TO_Officer ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
-ALTER TABLE Lecturer ADD FOREIGN KEY (user_id) REFERENCES User(user_id);
+ALTER TABLE Student ADD FOREIGN KEY (user_id) REFERENCES `User`(user_id);
+ALTER TABLE Dean ADD FOREIGN KEY (user_id) REFERENCES `User`(user_id);
+ALTER TABLE `Admin` ADD FOREIGN KEY (user_id) REFERENCES `User`(user_id);
+ALTER TABLE TO_Officer ADD FOREIGN KEY (user_id) REFERENCES `User`(user_id);
+ALTER TABLE Lecturer ADD FOREIGN KEY (user_id) REFERENCES `User`(user_id);
 
 
 -- Department and Course links
@@ -216,11 +216,12 @@ ALTER TABLE Department ADD FOREIGN KEY (Dean_id) REFERENCES Dean(Dean_id);
 ALTER TABLE Department ADD FOREIGN KEY (admin_id) REFERENCES Admin(admin_id);
 ALTER TABLE Course_Unit ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
 ALTER TABLE Dean ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
-ALTER TABLE Admin ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
+ALTER TABLE `Admin` ADD FOREIGN KEY (dp_id) REFERENCES Department(Department_id);
 
 
 -- Multi-valued attributes and many-to-many relationships
 
+ALTER TABLE Student_contact ADD FOREIGN KEY (reg_no) REFERENCES Student(reg_no);
 ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (course_code) REFERENCES Course_Unit(course_code);
 
 ALTER TABLE Lecturer_Course_Unit ADD FOREIGN KEY (lecturer_id) REFERENCES Lecturer(lecturer_id);
