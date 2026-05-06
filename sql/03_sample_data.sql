@@ -133,22 +133,22 @@ INSERT INTO Student_contact (reg_no, contact) VALUES
 -- 9. COURSE UNITS - Level 01 Semester 02 ICT Timetable
 -- ============================================================
 INSERT INTO Course_unit (course_code, name, credits, type, has_practical, has_theory, dp_id) VALUES
-('ICT1202', 'Programming Fundamentals II',       3, 'Core',     1, 1, 1),
-('ICT1204', 'Data Structures and Algorithms',    3, 'Core',     1, 1, 1),
-('ICT1206', 'Database Management Systems',       3, 'Core',     1, 1, 1),
-('ICT1208', 'Digital Logic Design',              3, 'Core',     0, 1, 1),
-('ICT1210', 'Web Technologies',                  3, 'Core',     1, 1, 1),
-('ICT1212', 'Mathematics for Computing II',      3, 'Core',     0, 1, 1);
+('ICT1261', 'System Programming Fundamentals and Linux',       3, 'Core',     1, 1, 1),
+('ICT1222', 'Database Management Systems Practicum',    3, 'Core',     1, 1, 1),
+('ICT1252', 'Operating Systems Concepts and Application',       3, 'Core',     1, 1, 1),
+('ICT1242', 'Web Development Practicum',              3, 'Core',     1, 1, 1),
+('ICT1232', 'Web Development',                  3, 'Core',     1, 1, 1),
+('ICT1212', 'Database Management Systems',      3, 'Core',     0, 1, 1);
 
 -- ============================================================
 -- 10. LECTURER-COURSE UNIT ASSIGNMENTS
 -- ============================================================
 INSERT INTO Lecturer_Course_Unit (course_code, lecturer_id) VALUES
-('ICT1202', 1),
-('ICT1204', 2),
-('ICT1206', 3),
-('ICT1208', 4),
-('ICT1210', 5),
+('ICT1261', 1),
+('ICT1222', 2),
+('ICT1252', 3),
+('ICT1242', 4),
+('ICT1232', 5),
 ('ICT1212', 1);
 
 -- ============================================================
@@ -156,233 +156,233 @@ INSERT INTO Lecturer_Course_Unit (course_code, lecturer_id) VALUES
 -- ============================================================
 -- All 15 students enrolled in all 6 course units for L1S2
 INSERT INTO Student_Course_Unit (reg_no, course_code, academic_year, semester) VALUES
-('ICT/2024/001','ICT1202','2024/25','S2'), ('ICT/2024/001','ICT1204','2024/25','S2'),
-('ICT/2024/001','ICT1206','2024/25','S2'), ('ICT/2024/001','ICT1208','2024/25','S2'),
-('ICT/2024/001','ICT1210','2024/25','S2'), ('ICT/2024/001','ICT1212','2024/25','S2'),
+('ICT/2024/001','ICT1261','2024/25','S2'), ('ICT/2024/001','ICT1222','2024/25','S2'),
+('ICT/2024/001','ICT1252','2024/25','S2'), ('ICT/2024/001','ICT1242','2024/25','S2'),
+('ICT/2024/001','ICT1232','2024/25','S2'), ('ICT/2024/001','ICT1212','2024/25','S2'),
 
-('ICT/2024/002','ICT1202','2024/25','S2'), ('ICT/2024/002','ICT1204','2024/25','S2'),
-('ICT/2024/002','ICT1206','2024/25','S2'), ('ICT/2024/002','ICT1208','2024/25','S2'),
-('ICT/2024/002','ICT1210','2024/25','S2'), ('ICT/2024/002','ICT1212','2024/25','S2'),
+('ICT/2024/002','ICT1261','2024/25','S2'), ('ICT/2024/002','ICT1222','2024/25','S2'),
+('ICT/2024/002','ICT1252','2024/25','S2'), ('ICT/2024/002','ICT1242','2024/25','S2'),
+('ICT/2024/002','ICT1232','2024/25','S2'), ('ICT/2024/002','ICT1212','2024/25','S2'),
 
-('ICT/2024/003','ICT1202','2024/25','S2'), ('ICT/2024/003','ICT1204','2024/25','S2'),
-('ICT/2024/003','ICT1206','2024/25','S2'), ('ICT/2024/003','ICT1208','2024/25','S2'),
-('ICT/2024/003','ICT1210','2024/25','S2'), ('ICT/2024/003','ICT1212','2024/25','S2'),
+('ICT/2024/003','ICT1261','2024/25','S2'), ('ICT/2024/003','ICT1222','2024/25','S2'),
+('ICT/2024/003','ICT1252','2024/25','S2'), ('ICT/2024/003','ICT1242','2024/25','S2'),
+('ICT/2024/003','ICT1232','2024/25','S2'), ('ICT/2024/003','ICT1212','2024/25','S2'),
 
-('ICT/2024/004','ICT1202','2024/25','S2'), ('ICT/2024/004','ICT1204','2024/25','S2'),
-('ICT/2024/004','ICT1206','2024/25','S2'), ('ICT/2024/004','ICT1208','2024/25','S2'),
-('ICT/2024/004','ICT1210','2024/25','S2'), ('ICT/2024/004','ICT1212','2024/25','S2'),
+('ICT/2024/004','ICT1261','2024/25','S2'), ('ICT/2024/004','ICT1222','2024/25','S2'),
+('ICT/2024/004','ICT1252','2024/25','S2'), ('ICT/2024/004','ICT1242','2024/25','S2'),
+('ICT/2024/004','ICT1232','2024/25','S2'), ('ICT/2024/004','ICT1212','2024/25','S2'),
 
-('ICT/2024/005','ICT1202','2024/25','S2'), ('ICT/2024/005','ICT1204','2024/25','S2'),
-('ICT/2024/005','ICT1206','2024/25','S2'), ('ICT/2024/005','ICT1208','2024/25','S2'),
-('ICT/2024/005','ICT1210','2024/25','S2'), ('ICT/2024/005','ICT1212','2024/25','S2'),
+('ICT/2024/005','ICT1261','2024/25','S2'), ('ICT/2024/005','ICT1222','2024/25','S2'),
+('ICT/2024/005','ICT1252','2024/25','S2'), ('ICT/2024/005','ICT1242','2024/25','S2'),
+('ICT/2024/005','ICT1232','2024/25','S2'), ('ICT/2024/005','ICT1212','2024/25','S2'),
 
-('ICT/2024/006','ICT1202','2024/25','S2'), ('ICT/2024/006','ICT1204','2024/25','S2'),
-('ICT/2024/006','ICT1206','2024/25','S2'), ('ICT/2024/006','ICT1208','2024/25','S2'),
-('ICT/2024/006','ICT1210','2024/25','S2'), ('ICT/2024/006','ICT1212','2024/25','S2'),
+('ICT/2024/006','ICT1261','2024/25','S2'), ('ICT/2024/006','ICT1222','2024/25','S2'),
+('ICT/2024/006','ICT1252','2024/25','S2'), ('ICT/2024/006','ICT1242','2024/25','S2'),
+('ICT/2024/006','ICT1232','2024/25','S2'), ('ICT/2024/006','ICT1212','2024/25','S2'),
 
-('ICT/2024/007','ICT1202','2024/25','S2'), ('ICT/2024/007','ICT1204','2024/25','S2'),
-('ICT/2024/007','ICT1206','2024/25','S2'), ('ICT/2024/007','ICT1208','2024/25','S2'),
-('ICT/2024/007','ICT1210','2024/25','S2'), ('ICT/2024/007','ICT1212','2024/25','S2'),
+('ICT/2024/007','ICT1261','2024/25','S2'), ('ICT/2024/007','ICT1222','2024/25','S2'),
+('ICT/2024/007','ICT1252','2024/25','S2'), ('ICT/2024/007','ICT1242','2024/25','S2'),
+('ICT/2024/007','ICT1232','2024/25','S2'), ('ICT/2024/007','ICT1212','2024/25','S2'),
 
-('ICT/2024/008','ICT1202','2024/25','S2'), ('ICT/2024/008','ICT1204','2024/25','S2'),
-('ICT/2024/008','ICT1206','2024/25','S2'), ('ICT/2024/008','ICT1208','2024/25','S2'),
-('ICT/2024/008','ICT1210','2024/25','S2'), ('ICT/2024/008','ICT1212','2024/25','S2'),
+('ICT/2024/008','ICT1261','2024/25','S2'), ('ICT/2024/008','ICT1222','2024/25','S2'),
+('ICT/2024/008','ICT1252','2024/25','S2'), ('ICT/2024/008','ICT1242','2024/25','S2'),
+('ICT/2024/008','ICT1232','2024/25','S2'), ('ICT/2024/008','ICT1212','2024/25','S2'),
 
-('ICT/2024/009','ICT1202','2024/25','S2'), ('ICT/2024/009','ICT1204','2024/25','S2'),
-('ICT/2024/009','ICT1206','2024/25','S2'), ('ICT/2024/009','ICT1208','2024/25','S2'),
-('ICT/2024/009','ICT1210','2024/25','S2'), ('ICT/2024/009','ICT1212','2024/25','S2'),
+('ICT/2024/009','ICT1261','2024/25','S2'), ('ICT/2024/009','ICT1222','2024/25','S2'),
+('ICT/2024/009','ICT1252','2024/25','S2'), ('ICT/2024/009','ICT1242','2024/25','S2'),
+('ICT/2024/009','ICT1232','2024/25','S2'), ('ICT/2024/009','ICT1212','2024/25','S2'),
 
-('ICT/2024/010','ICT1202','2024/25','S2'), ('ICT/2024/010','ICT1204','2024/25','S2'),
-('ICT/2024/010','ICT1206','2024/25','S2'), ('ICT/2024/010','ICT1208','2024/25','S2'),
-('ICT/2024/010','ICT1210','2024/25','S2'), ('ICT/2024/010','ICT1212','2024/25','S2'),
+('ICT/2024/010','ICT1261','2024/25','S2'), ('ICT/2024/010','ICT1222','2024/25','S2'),
+('ICT/2024/010','ICT1252','2024/25','S2'), ('ICT/2024/010','ICT1242','2024/25','S2'),
+('ICT/2024/010','ICT1232','2024/25','S2'), ('ICT/2024/010','ICT1212','2024/25','S2'),
 
 -- Repeat students
-('ICT/2022/011','ICT1202','2024/25','S2'), ('ICT/2022/011','ICT1204','2024/25','S2'),
-('ICT/2022/011','ICT1206','2024/25','S2'), ('ICT/2022/011','ICT1208','2024/25','S2'),
-('ICT/2022/011','ICT1210','2024/25','S2'), ('ICT/2022/011','ICT1212','2024/25','S2'),
+('ICT/2022/011','ICT1261','2024/25','S2'), ('ICT/2022/011','ICT1222','2024/25','S2'),
+('ICT/2022/011','ICT1252','2024/25','S2'), ('ICT/2022/011','ICT1242','2024/25','S2'),
+('ICT/2022/011','ICT1232','2024/25','S2'), ('ICT/2022/011','ICT1212','2024/25','S2'),
 
-('ICT/2022/012','ICT1202','2024/25','S2'), ('ICT/2022/012','ICT1204','2024/25','S2'),
-('ICT/2022/012','ICT1206','2024/25','S2'), ('ICT/2022/012','ICT1208','2024/25','S2'),
-('ICT/2022/012','ICT1210','2024/25','S2'), ('ICT/2022/012','ICT1212','2024/25','S2'),
+('ICT/2022/012','ICT1261','2024/25','S2'), ('ICT/2022/012','ICT1222','2024/25','S2'),
+('ICT/2022/012','ICT1252','2024/25','S2'), ('ICT/2022/012','ICT1242','2024/25','S2'),
+('ICT/2022/012','ICT1232','2024/25','S2'), ('ICT/2022/012','ICT1212','2024/25','S2'),
 
-('ICT/2023/013','ICT1202','2024/25','S2'), ('ICT/2023/013','ICT1204','2024/25','S2'),
-('ICT/2023/013','ICT1206','2024/25','S2'), ('ICT/2023/013','ICT1208','2024/25','S2'),
-('ICT/2023/013','ICT1210','2024/25','S2'), ('ICT/2023/013','ICT1212','2024/25','S2'),
+('ICT/2023/013','ICT1261','2024/25','S2'), ('ICT/2023/013','ICT1222','2024/25','S2'),
+('ICT/2023/013','ICT1252','2024/25','S2'), ('ICT/2023/013','ICT1242','2024/25','S2'),
+('ICT/2023/013','ICT1232','2024/25','S2'), ('ICT/2023/013','ICT1212','2024/25','S2'),
 
-('ICT/2023/014','ICT1202','2024/25','S2'), ('ICT/2023/014','ICT1204','2024/25','S2'),
-('ICT/2023/014','ICT1206','2024/25','S2'), ('ICT/2023/014','ICT1208','2024/25','S2'),
-('ICT/2023/014','ICT1210','2024/25','S2'), ('ICT/2023/014','ICT1212','2024/25','S2'),
+('ICT/2023/014','ICT1261','2024/25','S2'), ('ICT/2023/014','ICT1222','2024/25','S2'),
+('ICT/2023/014','ICT1252','2024/25','S2'), ('ICT/2023/014','ICT1242','2024/25','S2'),
+('ICT/2023/014','ICT1232','2024/25','S2'), ('ICT/2023/014','ICT1212','2024/25','S2'),
 
-('ICT/2023/015','ICT1202','2024/25','S2'), ('ICT/2023/015','ICT1204','2024/25','S2'),
-('ICT/2023/015','ICT1206','2024/25','S2'), ('ICT/2023/015','ICT1208','2024/25','S2'),
-('ICT/2023/015','ICT1210','2024/25','S2'), ('ICT/2023/015','ICT1212','2024/25','S2');
+('ICT/2023/015','ICT1261','2024/25','S2'), ('ICT/2023/015','ICT1222','2024/25','S2'),
+('ICT/2023/015','ICT1252','2024/25','S2'), ('ICT/2023/015','ICT1242','2024/25','S2'),
+('ICT/2023/015','ICT1232','2024/25','S2'), ('ICT/2023/015','ICT1212','2024/25','S2');
 
 -- ============================================================
 -- 12. SESSIONS
 -- Session logic:
 --   * 15 weeks, theory = 15 sessions, practical = 15 sessions (where applicable)
---   * ICT1202, ICT1204, ICT1206, ICT1210 => has_theory=1, has_practical=1
---   * ICT1208, ICT1212               => has_theory=1, has_practical=0
+--   * ICT1261, ICT1222, ICT1252, ICT1232 => has_theory=1, has_practical=1
+--   * ICT1242, ICT1212               => has_theory=1, has_practical=0
 --   * Semester starts 2025-01-06 (Monday)
 --   * Theory sessions: Mondays weekly; Practical sessions: Thursdays weekly
 -- ============================================================
 
--- ICT1202 - Programming Fundamentals II (Theory + Practical)
+-- ICT1261 - Programming Fundamentals II (Theory + Practical)
 INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) VALUES
 -- Theory (week 1-15, Mondays 08:00)
-('Theory', 1,  '2025-01-06 08:00:00', 'ICT1202'),
-('Theory', 2,  '2025-01-13 08:00:00', 'ICT1202'),
-('Theory', 3,  '2025-01-20 08:00:00', 'ICT1202'),
-('Theory', 4,  '2025-01-27 08:00:00', 'ICT1202'),
-('Theory', 5,  '2025-02-03 08:00:00', 'ICT1202'),
-('Theory', 6,  '2025-02-10 08:00:00', 'ICT1202'),
-('Theory', 7,  '2025-02-17 08:00:00', 'ICT1202'),
-('Theory', 8,  '2025-02-24 08:00:00', 'ICT1202'),
-('Theory', 9,  '2025-03-03 08:00:00', 'ICT1202'),
-('Theory', 10, '2025-03-10 08:00:00', 'ICT1202'),
-('Theory', 11, '2025-03-17 08:00:00', 'ICT1202'),
-('Theory', 12, '2025-03-24 08:00:00', 'ICT1202'),
-('Theory', 13, '2025-03-31 08:00:00', 'ICT1202'),
-('Theory', 14, '2025-04-07 08:00:00', 'ICT1202'),
-('Theory', 15, '2025-04-14 08:00:00', 'ICT1202'),
+('Theory', 1,  '2025-01-06 08:00:00', 'ICT1261'),
+('Theory', 2,  '2025-01-13 08:00:00', 'ICT1261'),
+('Theory', 3,  '2025-01-20 08:00:00', 'ICT1261'),
+('Theory', 4,  '2025-01-27 08:00:00', 'ICT1261'),
+('Theory', 5,  '2025-02-03 08:00:00', 'ICT1261'),
+('Theory', 6,  '2025-02-10 08:00:00', 'ICT1261'),
+('Theory', 7,  '2025-02-17 08:00:00', 'ICT1261'),
+('Theory', 8,  '2025-02-24 08:00:00', 'ICT1261'),
+('Theory', 9,  '2025-03-03 08:00:00', 'ICT1261'),
+('Theory', 10, '2025-03-10 08:00:00', 'ICT1261'),
+('Theory', 11, '2025-03-17 08:00:00', 'ICT1261'),
+('Theory', 12, '2025-03-24 08:00:00', 'ICT1261'),
+('Theory', 13, '2025-03-31 08:00:00', 'ICT1261'),
+('Theory', 14, '2025-04-07 08:00:00', 'ICT1261'),
+('Theory', 15, '2025-04-14 08:00:00', 'ICT1261'),
 -- Practical (week 1-15, Thursdays 14:00)
-('Practical', 1,  '2025-01-09 14:00:00', 'ICT1202'),
-('Practical', 2,  '2025-01-16 14:00:00', 'ICT1202'),
-('Practical', 3,  '2025-01-23 14:00:00', 'ICT1202'),
-('Practical', 4,  '2025-01-30 14:00:00', 'ICT1202'),
-('Practical', 5,  '2025-02-06 14:00:00', 'ICT1202'),
-('Practical', 6,  '2025-02-13 14:00:00', 'ICT1202'),
-('Practical', 7,  '2025-02-20 14:00:00', 'ICT1202'),
-('Practical', 8,  '2025-02-27 14:00:00', 'ICT1202'),
-('Practical', 9,  '2025-03-06 14:00:00', 'ICT1202'),
-('Practical', 10, '2025-03-13 14:00:00', 'ICT1202'),
-('Practical', 11, '2025-03-20 14:00:00', 'ICT1202'),
-('Practical', 12, '2025-03-27 14:00:00', 'ICT1202'),
-('Practical', 13, '2025-04-03 14:00:00', 'ICT1202'),
-('Practical', 14, '2025-04-10 14:00:00', 'ICT1202'),
-('Practical', 15, '2025-04-17 14:00:00', 'ICT1202');
--- session_id 1-15 = ICT1202 Theory, 16-30 = ICT1202 Practical
+('Practical', 1,  '2025-01-09 14:00:00', 'ICT1261'),
+('Practical', 2,  '2025-01-16 14:00:00', 'ICT1261'),
+('Practical', 3,  '2025-01-23 14:00:00', 'ICT1261'),
+('Practical', 4,  '2025-01-30 14:00:00', 'ICT1261'),
+('Practical', 5,  '2025-02-06 14:00:00', 'ICT1261'),
+('Practical', 6,  '2025-02-13 14:00:00', 'ICT1261'),
+('Practical', 7,  '2025-02-20 14:00:00', 'ICT1261'),
+('Practical', 8,  '2025-02-27 14:00:00', 'ICT1261'),
+('Practical', 9,  '2025-03-06 14:00:00', 'ICT1261'),
+('Practical', 10, '2025-03-13 14:00:00', 'ICT1261'),
+('Practical', 11, '2025-03-20 14:00:00', 'ICT1261'),
+('Practical', 12, '2025-03-27 14:00:00', 'ICT1261'),
+('Practical', 13, '2025-04-03 14:00:00', 'ICT1261'),
+('Practical', 14, '2025-04-10 14:00:00', 'ICT1261'),
+('Practical', 15, '2025-04-17 14:00:00', 'ICT1261');
+-- session_id 1-15 = ICT1261 Theory, 16-30 = ICT1261 Practical
 
 INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) VALUES
--- ICT1204 - Data Structures and Algorithms (Theory + Practical)
-('Theory', 1,  '2025-01-06 10:00:00', 'ICT1204'),
-('Theory', 2,  '2025-01-13 10:00:00', 'ICT1204'),
-('Theory', 3,  '2025-01-20 10:00:00', 'ICT1204'),
-('Theory', 4,  '2025-01-27 10:00:00', 'ICT1204'),
-('Theory', 5,  '2025-02-03 10:00:00', 'ICT1204'),
-('Theory', 6,  '2025-02-10 10:00:00', 'ICT1204'),
-('Theory', 7,  '2025-02-17 10:00:00', 'ICT1204'),
-('Theory', 8,  '2025-02-24 10:00:00', 'ICT1204'),
-('Theory', 9,  '2025-03-03 10:00:00', 'ICT1204'),
-('Theory', 10, '2025-03-10 10:00:00', 'ICT1204'),
-('Theory', 11, '2025-03-17 10:00:00', 'ICT1204'),
-('Theory', 12, '2025-03-24 10:00:00', 'ICT1204'),
-('Theory', 13, '2025-03-31 10:00:00', 'ICT1204'),
-('Theory', 14, '2025-04-07 10:00:00', 'ICT1204'),
-('Theory', 15, '2025-04-14 10:00:00', 'ICT1204'),
-('Practical', 1,  '2025-01-09 09:00:00', 'ICT1204'),
-('Practical', 2,  '2025-01-16 09:00:00', 'ICT1204'),
-('Practical', 3,  '2025-01-23 09:00:00', 'ICT1204'),
-('Practical', 4,  '2025-01-30 09:00:00', 'ICT1204'),
-('Practical', 5,  '2025-02-06 09:00:00', 'ICT1204'),
-('Practical', 6,  '2025-02-13 09:00:00', 'ICT1204'),
-('Practical', 7,  '2025-02-20 09:00:00', 'ICT1204'),
-('Practical', 8,  '2025-02-27 09:00:00', 'ICT1204'),
-('Practical', 9,  '2025-03-06 09:00:00', 'ICT1204'),
-('Practical', 10, '2025-03-13 09:00:00', 'ICT1204'),
-('Practical', 11, '2025-03-20 09:00:00', 'ICT1204'),
-('Practical', 12, '2025-03-27 09:00:00', 'ICT1204'),
-('Practical', 13, '2025-04-03 09:00:00', 'ICT1204'),
-('Practical', 14, '2025-04-10 09:00:00', 'ICT1204'),
-('Practical', 15, '2025-04-17 09:00:00', 'ICT1204');
--- session_id 31-45 = ICT1204 Theory, 46-60 = ICT1204 Practical
+-- ICT1222 - Data Structures and Algorithms (Theory + Practical)
+('Theory', 1,  '2025-01-06 10:00:00', 'ICT1222'),
+('Theory', 2,  '2025-01-13 10:00:00', 'ICT1222'),
+('Theory', 3,  '2025-01-20 10:00:00', 'ICT1222'),
+('Theory', 4,  '2025-01-27 10:00:00', 'ICT1222'),
+('Theory', 5,  '2025-02-03 10:00:00', 'ICT1222'),
+('Theory', 6,  '2025-02-10 10:00:00', 'ICT1222'),
+('Theory', 7,  '2025-02-17 10:00:00', 'ICT1222'),
+('Theory', 8,  '2025-02-24 10:00:00', 'ICT1222'),
+('Theory', 9,  '2025-03-03 10:00:00', 'ICT1222'),
+('Theory', 10, '2025-03-10 10:00:00', 'ICT1222'),
+('Theory', 11, '2025-03-17 10:00:00', 'ICT1222'),
+('Theory', 12, '2025-03-24 10:00:00', 'ICT1222'),
+('Theory', 13, '2025-03-31 10:00:00', 'ICT1222'),
+('Theory', 14, '2025-04-07 10:00:00', 'ICT1222'),
+('Theory', 15, '2025-04-14 10:00:00', 'ICT1222'),
+('Practical', 1,  '2025-01-09 09:00:00', 'ICT1222'),
+('Practical', 2,  '2025-01-16 09:00:00', 'ICT1222'),
+('Practical', 3,  '2025-01-23 09:00:00', 'ICT1222'),
+('Practical', 4,  '2025-01-30 09:00:00', 'ICT1222'),
+('Practical', 5,  '2025-02-06 09:00:00', 'ICT1222'),
+('Practical', 6,  '2025-02-13 09:00:00', 'ICT1222'),
+('Practical', 7,  '2025-02-20 09:00:00', 'ICT1222'),
+('Practical', 8,  '2025-02-27 09:00:00', 'ICT1222'),
+('Practical', 9,  '2025-03-06 09:00:00', 'ICT1222'),
+('Practical', 10, '2025-03-13 09:00:00', 'ICT1222'),
+('Practical', 11, '2025-03-20 09:00:00', 'ICT1222'),
+('Practical', 12, '2025-03-27 09:00:00', 'ICT1222'),
+('Practical', 13, '2025-04-03 09:00:00', 'ICT1222'),
+('Practical', 14, '2025-04-10 09:00:00', 'ICT1222'),
+('Practical', 15, '2025-04-17 09:00:00', 'ICT1222');
+-- session_id 31-45 = ICT1222 Theory, 46-60 = ICT1222 Practical
 
 INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) VALUES
--- ICT1206 - Database Management Systems (Theory + Practical)
-('Theory', 1,  '2025-01-07 08:00:00', 'ICT1206'),
-('Theory', 2,  '2025-01-14 08:00:00', 'ICT1206'),
-('Theory', 3,  '2025-01-21 08:00:00', 'ICT1206'),
-('Theory', 4,  '2025-01-28 08:00:00', 'ICT1206'),
-('Theory', 5,  '2025-02-04 08:00:00', 'ICT1206'),
-('Theory', 6,  '2025-02-11 08:00:00', 'ICT1206'),
-('Theory', 7,  '2025-02-18 08:00:00', 'ICT1206'),
-('Theory', 8,  '2025-02-25 08:00:00', 'ICT1206'),
-('Theory', 9,  '2025-03-04 08:00:00', 'ICT1206'),
-('Theory', 10, '2025-03-11 08:00:00', 'ICT1206'),
-('Theory', 11, '2025-03-18 08:00:00', 'ICT1206'),
-('Theory', 12, '2025-03-25 08:00:00', 'ICT1206'),
-('Theory', 13, '2025-04-01 08:00:00', 'ICT1206'),
-('Theory', 14, '2025-04-08 08:00:00', 'ICT1206'),
-('Theory', 15, '2025-04-15 08:00:00', 'ICT1206'),
-('Practical', 1,  '2025-01-10 14:00:00', 'ICT1206'),
-('Practical', 2,  '2025-01-17 14:00:00', 'ICT1206'),
-('Practical', 3,  '2025-01-24 14:00:00', 'ICT1206'),
-('Practical', 4,  '2025-01-31 14:00:00', 'ICT1206'),
-('Practical', 5,  '2025-02-07 14:00:00', 'ICT1206'),
-('Practical', 6,  '2025-02-14 14:00:00', 'ICT1206'),
-('Practical', 7,  '2025-02-21 14:00:00', 'ICT1206'),
-('Practical', 8,  '2025-02-28 14:00:00', 'ICT1206'),
-('Practical', 9,  '2025-03-07 14:00:00', 'ICT1206'),
-('Practical', 10, '2025-03-14 14:00:00', 'ICT1206'),
-('Practical', 11, '2025-03-21 14:00:00', 'ICT1206'),
-('Practical', 12, '2025-03-28 14:00:00', 'ICT1206'),
-('Practical', 13, '2025-04-04 14:00:00', 'ICT1206'),
-('Practical', 14, '2025-04-11 14:00:00', 'ICT1206'),
-('Practical', 15, '2025-04-18 14:00:00', 'ICT1206');
--- session_id 61-75 = ICT1206 Theory, 76-90 = ICT1206 Practical
+-- ICT1252 - Database Management Systems (Theory + Practical)
+('Theory', 1,  '2025-01-07 08:00:00', 'ICT1252'),
+('Theory', 2,  '2025-01-14 08:00:00', 'ICT1252'),
+('Theory', 3,  '2025-01-21 08:00:00', 'ICT1252'),
+('Theory', 4,  '2025-01-28 08:00:00', 'ICT1252'),
+('Theory', 5,  '2025-02-04 08:00:00', 'ICT1252'),
+('Theory', 6,  '2025-02-11 08:00:00', 'ICT1252'),
+('Theory', 7,  '2025-02-18 08:00:00', 'ICT1252'),
+('Theory', 8,  '2025-02-25 08:00:00', 'ICT1252'),
+('Theory', 9,  '2025-03-04 08:00:00', 'ICT1252'),
+('Theory', 10, '2025-03-11 08:00:00', 'ICT1252'),
+('Theory', 11, '2025-03-18 08:00:00', 'ICT1252'),
+('Theory', 12, '2025-03-25 08:00:00', 'ICT1252'),
+('Theory', 13, '2025-04-01 08:00:00', 'ICT1252'),
+('Theory', 14, '2025-04-08 08:00:00', 'ICT1252'),
+('Theory', 15, '2025-04-15 08:00:00', 'ICT1252'),
+('Practical', 1,  '2025-01-10 14:00:00', 'ICT1252'),
+('Practical', 2,  '2025-01-17 14:00:00', 'ICT1252'),
+('Practical', 3,  '2025-01-24 14:00:00', 'ICT1252'),
+('Practical', 4,  '2025-01-31 14:00:00', 'ICT1252'),
+('Practical', 5,  '2025-02-07 14:00:00', 'ICT1252'),
+('Practical', 6,  '2025-02-14 14:00:00', 'ICT1252'),
+('Practical', 7,  '2025-02-21 14:00:00', 'ICT1252'),
+('Practical', 8,  '2025-02-28 14:00:00', 'ICT1252'),
+('Practical', 9,  '2025-03-07 14:00:00', 'ICT1252'),
+('Practical', 10, '2025-03-14 14:00:00', 'ICT1252'),
+('Practical', 11, '2025-03-21 14:00:00', 'ICT1252'),
+('Practical', 12, '2025-03-28 14:00:00', 'ICT1252'),
+('Practical', 13, '2025-04-04 14:00:00', 'ICT1252'),
+('Practical', 14, '2025-04-11 14:00:00', 'ICT1252'),
+('Practical', 15, '2025-04-18 14:00:00', 'ICT1252');
+-- session_id 61-75 = ICT1252 Theory, 76-90 = ICT1252 Practical
 
 INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) VALUES
--- ICT1208 - Digital Logic Design (Theory ONLY, no practical)
-('Theory', 1,  '2025-01-07 10:00:00', 'ICT1208'),
-('Theory', 2,  '2025-01-14 10:00:00', 'ICT1208'),
-('Theory', 3,  '2025-01-21 10:00:00', 'ICT1208'),
-('Theory', 4,  '2025-01-28 10:00:00', 'ICT1208'),
-('Theory', 5,  '2025-02-04 10:00:00', 'ICT1208'),
-('Theory', 6,  '2025-02-11 10:00:00', 'ICT1208'),
-('Theory', 7,  '2025-02-18 10:00:00', 'ICT1208'),
-('Theory', 8,  '2025-02-25 10:00:00', 'ICT1208'),
-('Theory', 9,  '2025-03-04 10:00:00', 'ICT1208'),
-('Theory', 10, '2025-03-11 10:00:00', 'ICT1208'),
-('Theory', 11, '2025-03-18 10:00:00', 'ICT1208'),
-('Theory', 12, '2025-03-25 10:00:00', 'ICT1208'),
-('Theory', 13, '2025-04-01 10:00:00', 'ICT1208'),
-('Theory', 14, '2025-04-08 10:00:00', 'ICT1208'),
-('Theory', 15, '2025-04-15 10:00:00', 'ICT1208');
--- session_id 91-105 = ICT1208 Theory
+-- ICT1242 - Digital Logic Design (Theory ONLY, no practical)
+('Theory', 1,  '2025-01-07 10:00:00', 'ICT1242'),
+('Theory', 2,  '2025-01-14 10:00:00', 'ICT1242'),
+('Theory', 3,  '2025-01-21 10:00:00', 'ICT1242'),
+('Theory', 4,  '2025-01-28 10:00:00', 'ICT1242'),
+('Theory', 5,  '2025-02-04 10:00:00', 'ICT1242'),
+('Theory', 6,  '2025-02-11 10:00:00', 'ICT1242'),
+('Theory', 7,  '2025-02-18 10:00:00', 'ICT1242'),
+('Theory', 8,  '2025-02-25 10:00:00', 'ICT1242'),
+('Theory', 9,  '2025-03-04 10:00:00', 'ICT1242'),
+('Theory', 10, '2025-03-11 10:00:00', 'ICT1242'),
+('Theory', 11, '2025-03-18 10:00:00', 'ICT1242'),
+('Theory', 12, '2025-03-25 10:00:00', 'ICT1242'),
+('Theory', 13, '2025-04-01 10:00:00', 'ICT1242'),
+('Theory', 14, '2025-04-08 10:00:00', 'ICT1242'),
+('Theory', 15, '2025-04-15 10:00:00', 'ICT1242');
+-- session_id 91-105 = ICT1242 Theory
 
 INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) VALUES
--- ICT1210 - Web Technologies (Theory + Practical)
-('Theory', 1,  '2025-01-08 08:00:00', 'ICT1210'),
-('Theory', 2,  '2025-01-15 08:00:00', 'ICT1210'),
-('Theory', 3,  '2025-01-22 08:00:00', 'ICT1210'),
-('Theory', 4,  '2025-01-29 08:00:00', 'ICT1210'),
-('Theory', 5,  '2025-02-05 08:00:00', 'ICT1210'),
-('Theory', 6,  '2025-02-12 08:00:00', 'ICT1210'),
-('Theory', 7,  '2025-02-19 08:00:00', 'ICT1210'),
-('Theory', 8,  '2025-02-26 08:00:00', 'ICT1210'),
-('Theory', 9,  '2025-03-05 08:00:00', 'ICT1210'),
-('Theory', 10, '2025-03-12 08:00:00', 'ICT1210'),
-('Theory', 11, '2025-03-19 08:00:00', 'ICT1210'),
-('Theory', 12, '2025-03-26 08:00:00', 'ICT1210'),
-('Theory', 13, '2025-04-02 08:00:00', 'ICT1210'),
-('Theory', 14, '2025-04-09 08:00:00', 'ICT1210'),
-('Theory', 15, '2025-04-16 08:00:00', 'ICT1210'),
-('Practical', 1,  '2025-01-10 09:00:00', 'ICT1210'),
-('Practical', 2,  '2025-01-17 09:00:00', 'ICT1210'),
-('Practical', 3,  '2025-01-24 09:00:00', 'ICT1210'),
-('Practical', 4,  '2025-01-31 09:00:00', 'ICT1210'),
-('Practical', 5,  '2025-02-07 09:00:00', 'ICT1210'),
-('Practical', 6,  '2025-02-14 09:00:00', 'ICT1210'),
-('Practical', 7,  '2025-02-21 09:00:00', 'ICT1210'),
-('Practical', 8,  '2025-02-28 09:00:00', 'ICT1210'),
-('Practical', 9,  '2025-03-07 09:00:00', 'ICT1210'),
-('Practical', 10, '2025-03-14 09:00:00', 'ICT1210'),
-('Practical', 11, '2025-03-21 09:00:00', 'ICT1210'),
-('Practical', 12, '2025-03-28 09:00:00', 'ICT1210'),
-('Practical', 13, '2025-04-04 09:00:00', 'ICT1210'),
-('Practical', 14, '2025-04-11 09:00:00', 'ICT1210'),
-('Practical', 15, '2025-04-18 09:00:00', 'ICT1210');
--- session_id 106-120 = ICT1210 Theory, 121-135 = ICT1210 Practical
+-- ICT1232 - Web Technologies (Theory + Practical)
+('Theory', 1,  '2025-01-08 08:00:00', 'ICT1232'),
+('Theory', 2,  '2025-01-15 08:00:00', 'ICT1232'),
+('Theory', 3,  '2025-01-22 08:00:00', 'ICT1232'),
+('Theory', 4,  '2025-01-29 08:00:00', 'ICT1232'),
+('Theory', 5,  '2025-02-05 08:00:00', 'ICT1232'),
+('Theory', 6,  '2025-02-12 08:00:00', 'ICT1232'),
+('Theory', 7,  '2025-02-19 08:00:00', 'ICT1232'),
+('Theory', 8,  '2025-02-26 08:00:00', 'ICT1232'),
+('Theory', 9,  '2025-03-05 08:00:00', 'ICT1232'),
+('Theory', 10, '2025-03-12 08:00:00', 'ICT1232'),
+('Theory', 11, '2025-03-19 08:00:00', 'ICT1232'),
+('Theory', 12, '2025-03-26 08:00:00', 'ICT1232'),
+('Theory', 13, '2025-04-02 08:00:00', 'ICT1232'),
+('Theory', 14, '2025-04-09 08:00:00', 'ICT1232'),
+('Theory', 15, '2025-04-16 08:00:00', 'ICT1232'),
+('Practical', 1,  '2025-01-10 09:00:00', 'ICT1232'),
+('Practical', 2,  '2025-01-17 09:00:00', 'ICT1232'),
+('Practical', 3,  '2025-01-24 09:00:00', 'ICT1232'),
+('Practical', 4,  '2025-01-31 09:00:00', 'ICT1232'),
+('Practical', 5,  '2025-02-07 09:00:00', 'ICT1232'),
+('Practical', 6,  '2025-02-14 09:00:00', 'ICT1232'),
+('Practical', 7,  '2025-02-21 09:00:00', 'ICT1232'),
+('Practical', 8,  '2025-02-28 09:00:00', 'ICT1232'),
+('Practical', 9,  '2025-03-07 09:00:00', 'ICT1232'),
+('Practical', 10, '2025-03-14 09:00:00', 'ICT1232'),
+('Practical', 11, '2025-03-21 09:00:00', 'ICT1232'),
+('Practical', 12, '2025-03-28 09:00:00', 'ICT1232'),
+('Practical', 13, '2025-04-04 09:00:00', 'ICT1232'),
+('Practical', 14, '2025-04-11 09:00:00', 'ICT1232'),
+('Practical', 15, '2025-04-18 09:00:00', 'ICT1232');
+-- session_id 106-120 = ICT1232 Theory, 121-135 = ICT1232 Practical
 
 INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) VALUES
 -- ICT1212 - Mathematics for Computing II (Theory ONLY, no practical)
@@ -406,11 +406,11 @@ INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) V
 -- ============================================================
 -- 13. ATTENDANCE RECORDS
 -- Session ID ranges (reference):
---   ICT1202: Theory  1-15,  Practical 16-30
---   ICT1204: Theory 31-45,  Practical 46-60
---   ICT1206: Theory 61-75,  Practical 76-90
---   ICT1208: Theory 91-105  (no practical)
---   ICT1210: Theory 106-120, Practical 121-135
+--   ICT1261: Theory  1-15,  Practical 16-30
+--   ICT1222: Theory 31-45,  Practical 46-60
+--   ICT1252: Theory 61-75,  Practical 76-90
+--   ICT1242: Theory 91-105  (no practical)
+--   ICT1232: Theory 106-120, Practical 121-135
 --   ICT1212: Theory 136-150 (no practical)
 --
 -- Strategy:
@@ -424,7 +424,7 @@ INSERT INTO Session (session_type, week_no, time_allocation_date, course_code) V
 -- Helper: generate attendance for all 15 students across a set of session_ids
 -- We'll do per-course blocks for clarity
 
--- === ICT1202 Theory (session_id 1-15) ===
+-- === ICT1261 Theory (session_id 1-15) ===
 INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 (1,'ICT/2024/001','Present',1),(2,'ICT/2024/001','Present',1),(3,'ICT/2024/001','Present',1),
 (4,'ICT/2024/001','Present',1),(5,'ICT/2024/001','Present',1),(6,'ICT/2024/001','Present',2),
@@ -487,7 +487,7 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 (10,'ICT/2024/010','Absent',2),(11,'ICT/2024/010','Present',2),(12,'ICT/2024/010','Present',2),
 (13,'ICT/2024/010','Present',2),(14,'ICT/2024/010','Present',2),(15,'ICT/2024/010','Present',2),
 
--- Repeat students - ICT1202 Theory
+-- Repeat students - ICT1261 Theory
 (1,'ICT/2022/011','Present',3),(2,'ICT/2022/011','Present',3),(3,'ICT/2022/011','Absent',3),
 (4,'ICT/2022/011','Present',3),(5,'ICT/2022/011','Present',3),(6,'ICT/2022/011','Present',3),
 (7,'ICT/2022/011','Present',3),(8,'ICT/2022/011','Present',3),(9,'ICT/2022/011','Present',3),
@@ -518,7 +518,7 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 (10,'ICT/2023/015','Present',2),(11,'ICT/2023/015','Present',2),(12,'ICT/2023/015','Present',2),
 (13,'ICT/2023/015','Present',2),(14,'ICT/2023/015','Present',2),(15,'ICT/2023/015','Present',2);
 
--- === ICT1202 Practical (session_id 16-30) - sample for all students ===
+-- === ICT1261 Practical (session_id 16-30) - sample for all students ===
 INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 (16,'ICT/2024/001','Present',1),(17,'ICT/2024/001','Present',1),(18,'ICT/2024/001','Present',1),
 (19,'ICT/2024/001','Present',1),(20,'ICT/2024/001','Present',2),(21,'ICT/2024/001','Present',2),
@@ -544,7 +544,7 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 (25,'ICT/2024/004','Present',3),(26,'ICT/2024/004','Present',3),(27,'ICT/2024/004','Present',3),
 (28,'ICT/2024/004','Present',4),(29,'ICT/2024/004','Present',4),(30,'ICT/2024/004','Present',4),
 
--- Low attendance student - ICT1202 Practical
+-- Low attendance student - ICT1261 Practical
 (16,'ICT/2024/005','Present',1),(17,'ICT/2024/005','Absent',1),(18,'ICT/2024/005','Absent',1),
 (19,'ICT/2024/005','Present',1),(20,'ICT/2024/005','Present',2),(21,'ICT/2024/005','Absent',2),
 (22,'ICT/2024/005','Present',2),(23,'ICT/2024/005','Absent',2),(24,'ICT/2024/005','Present',3),
@@ -611,14 +611,14 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 (25,'ICT/2023/015','Present',4),(26,'ICT/2023/015','Absent',4),(27,'ICT/2023/015','Present',4),
 (28,'ICT/2023/015','Present',5),(29,'ICT/2023/015','Present',5),(30,'ICT/2023/015','Present',5);
 
--- NOTE: For brevity, attendance for ICT1204-ICT1212 follows the same
+-- NOTE: For brevity, attendance for ICT1222-ICT1212 follows the same
 -- Present/Absent pattern. A production script would repeat the above
 -- pattern for session_id ranges 31-60, 61-90, 91-105, 106-135, 136-150.
--- Below we insert representative records for sessions 31-45 (ICT1204 Theory)
+-- Below we insert representative records for sessions 31-45 (ICT1222 Theory)
 -- to demonstrate the pattern is consistent and referentially intact.
 
 INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
--- ICT1204 Theory (31-45) - selected students for demonstration
+-- ICT1222 Theory (31-45) - selected students for demonstration
 (31,'ICT/2024/001','Present',1),(32,'ICT/2024/001','Present',1),(33,'ICT/2024/001','Present',1),
 (34,'ICT/2024/001','Present',2),(35,'ICT/2024/001','Present',2),(36,'ICT/2024/001','Present',2),
 (37,'ICT/2024/001','Absent',3),(38,'ICT/2024/001','Present',3),(39,'ICT/2024/001','Present',3),
@@ -631,21 +631,21 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 (40,'ICT/2024/005','Present',4),(41,'ICT/2024/005','Absent',4),(42,'ICT/2024/005','Present',4),
 (43,'ICT/2024/005','Present',5),(44,'ICT/2024/005','Absent',5),(45,'ICT/2024/005','Present',5),
 
--- ICT1206 Theory (61-75) - sample
+-- ICT1252 Theory (61-75) - sample
 (61,'ICT/2024/001','Present',1),(62,'ICT/2024/001','Present',1),(63,'ICT/2024/001','Present',2),
 (64,'ICT/2024/001','Present',2),(65,'ICT/2024/001','Present',3),(66,'ICT/2024/001','Present',3),
 (67,'ICT/2024/001','Present',4),(68,'ICT/2024/001','Absent',4),(69,'ICT/2024/001','Present',5),
 (70,'ICT/2024/001','Present',5),(71,'ICT/2024/001','Present',1),(72,'ICT/2024/001','Present',1),
 (73,'ICT/2024/001','Present',2),(74,'ICT/2024/001','Present',2),(75,'ICT/2024/001','Present',3),
 
--- ICT1208 Theory (91-105) - sample
+-- ICT1242 Theory (91-105) - sample
 (91,'ICT/2024/001','Present',1),(92,'ICT/2024/001','Present',1),(93,'ICT/2024/001','Present',2),
 (94,'ICT/2024/001','Present',2),(95,'ICT/2024/001','Present',3),(96,'ICT/2024/001','Present',3),
 (97,'ICT/2024/001','Present',4),(98,'ICT/2024/001','Present',4),(99,'ICT/2024/001','Present',5),
 (100,'ICT/2024/001','Absent',5),(101,'ICT/2024/001','Present',1),(102,'ICT/2024/001','Present',1),
 (103,'ICT/2024/001','Present',2),(104,'ICT/2024/001','Present',2),(105,'ICT/2024/001','Present',3),
 
--- ICT1210 Theory (106-120) - sample
+-- ICT1232 Theory (106-120) - sample
 (106,'ICT/2024/001','Present',1),(107,'ICT/2024/001','Present',2),(108,'ICT/2024/001','Present',3),
 (109,'ICT/2024/001','Present',4),(110,'ICT/2024/001','Present',5),(111,'ICT/2024/001','Present',1),
 (112,'ICT/2024/001','Present',2),(113,'ICT/2024/001','Present',3),(114,'ICT/2024/001','Present',4),
@@ -661,18 +661,18 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 
 -- ============================================================
 -- 14. MEDICAL RECORDS
--- ICT/2022/011 was absent in ICT1202 Theory Week 3 (session_id=3)
+-- ICT/2022/011 was absent in ICT1261 Theory Week 3 (session_id=3)
 -- and submitted a medical certificate for that day
 -- ============================================================
 INSERT INTO Medical (approval, submitted_date, session_id, department_id, reg_no) VALUES
 (1, '2025-01-23', 3, 1, 'ICT/2022/011'),   -- medical_id = 1
 (0, '2025-02-06', 20, 1, 'ICT/2024/005'),  -- pending medical for low-attendance student, practical week 5
-(1, '2025-02-18', 37, 1, 'ICT/2024/005');  -- approved medical ICT1204 practical week 7
+(1, '2025-02-18', 37, 1, 'ICT/2024/005');  -- approved medical ICT1222 practical week 7
 
 INSERT INTO Medical_Cover_Date (medical_id, covers_date) VALUES
-(1, '2025-01-20'),   -- covers the date of session_id=3 (ICT1202 Theory Week 3)
-(2, '2025-02-06'),   -- covers ICT1202 Practical Week 5
-(3, '2025-02-20');   -- covers ICT1204 Practical Week 7
+(1, '2025-01-20'),   -- covers the date of session_id=3 (ICT1261 Theory Week 3)
+(2, '2025-02-06'),   -- covers ICT1261 Practical Week 5
+(3, '2025-02-20');   -- covers ICT1222 Practical Week 7
 
 -- Update attendance to reflect medical for ICT/2022/011 session 3
 -- (The attendance_id for this record would be looked up; is_medical flag is in Student_Marks,
@@ -682,26 +682,26 @@ INSERT INTO Medical_Cover_Date (medical_id, covers_date) VALUES
 -- 15. ASSIGNMENTS
 -- ============================================================
 INSERT INTO Assignment (Assignment_name, type, max_marks, course_code) VALUES
--- ICT1202
-('ICT1202 Assignment 01 - Basic OOP',      'Assignment', 25.00, 'ICT1202'),
-('ICT1202 Mid-Semester Test',              'CA Test',   30.00, 'ICT1202'),
-('ICT1202 Assignment 02 - File Handling',  'Assignment', 20.00, 'ICT1202'),
-('ICT1202 Practical Assessment',           'Practical',  25.00, 'ICT1202'),
--- ICT1204
-('ICT1204 Assignment 01 - Array Problems', 'Assignment', 25.00, 'ICT1204'),
-('ICT1204 Mid-Semester Test',              'CA Test',   30.00, 'ICT1204'),
-('ICT1204 Lab Assessment',                 'Practical',  25.00, 'ICT1204'),
--- ICT1206
-('ICT1206 Assignment 01 - ER Diagrams',    'Assignment', 20.00, 'ICT1206'),
-('ICT1206 Mid-Semester Test',              'CA Test',   30.00, 'ICT1206'),
-('ICT1206 SQL Lab Assessment',             'Practical',  25.00, 'ICT1206'),
--- ICT1208
-('ICT1208 Assignment 01 - Boolean Algebra','Assignment', 25.00, 'ICT1208'),
-('ICT1208 Mid-Semester Test',              'CA Test',   30.00, 'ICT1208'),
--- ICT1210
-('ICT1210 Assignment 01 - HTML/CSS',       'Assignment', 20.00, 'ICT1210'),
-('ICT1210 Mid-Semester Test',              'CA Test',   30.00, 'ICT1210'),
-('ICT1210 Web Project',                    'Practical',  30.00, 'ICT1210'),
+-- ICT1261
+('ICT1261 Assignment 01 - Basic OOP',      'Assignment', 25.00, 'ICT1261'),
+('ICT1261 Mid-Semester Test',              'CA Test',   30.00, 'ICT1261'),
+('ICT1261 Assignment 02 - File Handling',  'Assignment', 20.00, 'ICT1261'),
+('ICT1261 Practical Assessment',           'Practical',  25.00, 'ICT1261'),
+-- ICT1222
+('ICT1222 Assignment 01 - Array Problems', 'Assignment', 25.00, 'ICT1222'),
+('ICT1222 Mid-Semester Test',              'CA Test',   30.00, 'ICT1222'),
+('ICT1222 Lab Assessment',                 'Practical',  25.00, 'ICT1222'),
+-- ICT1252
+('ICT1252 Assignment 01 - ER Diagrams',    'Assignment', 20.00, 'ICT1252'),
+('ICT1252 Mid-Semester Test',              'CA Test',   30.00, 'ICT1252'),
+('ICT1252 SQL Lab Assessment',             'Practical',  25.00, 'ICT1252'),
+-- ICT1242
+('ICT1242 Assignment 01 - Boolean Algebra','Assignment', 25.00, 'ICT1242'),
+('ICT1242 Mid-Semester Test',              'CA Test',   30.00, 'ICT1242'),
+-- ICT1232
+('ICT1232 Assignment 01 - HTML/CSS',       'Assignment', 20.00, 'ICT1232'),
+('ICT1232 Mid-Semester Test',              'CA Test',   30.00, 'ICT1232'),
+('ICT1232 Web Project',                    'Practical',  30.00, 'ICT1232'),
 -- ICT1212
 ('ICT1212 Assignment 01 - Set Theory',     'Assignment', 25.00, 'ICT1212'),
 ('ICT1212 Mid-Semester Test',              'CA Test',   30.00, 'ICT1212');
@@ -801,53 +801,53 @@ INSERT INTO GPA (reg_no, sgpa, cgpa) VALUES
 -- ============================================================
 -- Attendance eligibility: >= 80% attendance required (theory + practical weighted)
 -- CA eligibility: >= 40% of CA marks required
--- ICT/2024/005 fails attendance eligibility for ICT1202 and ICT1204
+-- ICT/2024/005 fails attendance eligibility for ICT1261 and ICT1222
 INSERT INTO Eligibility (Student_id, Course_id, attendance_eligibility, ca_eligibility) VALUES
-('ICT/2024/001','ICT1202',1,1), ('ICT/2024/001','ICT1204',1,1), ('ICT/2024/001','ICT1206',1,1),
-('ICT/2024/001','ICT1208',1,1), ('ICT/2024/001','ICT1210',1,1), ('ICT/2024/001','ICT1212',1,1),
+('ICT/2024/001','ICT1261',1,1), ('ICT/2024/001','ICT1222',1,1), ('ICT/2024/001','ICT1252',1,1),
+('ICT/2024/001','ICT1242',1,1), ('ICT/2024/001','ICT1232',1,1), ('ICT/2024/001','ICT1212',1,1),
 
-('ICT/2024/002','ICT1202',1,1), ('ICT/2024/002','ICT1204',1,1), ('ICT/2024/002','ICT1206',1,1),
-('ICT/2024/002','ICT1208',1,1), ('ICT/2024/002','ICT1210',1,1), ('ICT/2024/002','ICT1212',1,1),
+('ICT/2024/002','ICT1261',1,1), ('ICT/2024/002','ICT1222',1,1), ('ICT/2024/002','ICT1252',1,1),
+('ICT/2024/002','ICT1242',1,1), ('ICT/2024/002','ICT1232',1,1), ('ICT/2024/002','ICT1212',1,1),
 
-('ICT/2024/003','ICT1202',1,1), ('ICT/2024/003','ICT1204',1,1), ('ICT/2024/003','ICT1206',1,1),
-('ICT/2024/003','ICT1208',1,1), ('ICT/2024/003','ICT1210',1,1), ('ICT/2024/003','ICT1212',1,1),
+('ICT/2024/003','ICT1261',1,1), ('ICT/2024/003','ICT1222',1,1), ('ICT/2024/003','ICT1252',1,1),
+('ICT/2024/003','ICT1242',1,1), ('ICT/2024/003','ICT1232',1,1), ('ICT/2024/003','ICT1212',1,1),
 
-('ICT/2024/004','ICT1202',1,1), ('ICT/2024/004','ICT1204',1,1), ('ICT/2024/004','ICT1206',1,1),
-('ICT/2024/004','ICT1208',1,1), ('ICT/2024/004','ICT1210',1,1), ('ICT/2024/004','ICT1212',1,1),
+('ICT/2024/004','ICT1261',1,1), ('ICT/2024/004','ICT1222',1,1), ('ICT/2024/004','ICT1252',1,1),
+('ICT/2024/004','ICT1242',1,1), ('ICT/2024/004','ICT1232',1,1), ('ICT/2024/004','ICT1212',1,1),
 
--- Low attendance student - fails attendance for ICT1202 and ICT1204
-('ICT/2024/005','ICT1202',0,1), ('ICT/2024/005','ICT1204',0,0), ('ICT/2024/005','ICT1206',1,1),
-('ICT/2024/005','ICT1208',1,1), ('ICT/2024/005','ICT1210',1,1), ('ICT/2024/005','ICT1212',1,1),
+-- Low attendance student - fails attendance for ICT1261 and ICT1222
+('ICT/2024/005','ICT1261',0,1), ('ICT/2024/005','ICT1222',0,0), ('ICT/2024/005','ICT1252',1,1),
+('ICT/2024/005','ICT1242',1,1), ('ICT/2024/005','ICT1232',1,1), ('ICT/2024/005','ICT1212',1,1),
 
-('ICT/2024/006','ICT1202',1,1), ('ICT/2024/006','ICT1204',1,1), ('ICT/2024/006','ICT1206',1,1),
-('ICT/2024/006','ICT1208',1,1), ('ICT/2024/006','ICT1210',1,1), ('ICT/2024/006','ICT1212',1,1),
+('ICT/2024/006','ICT1261',1,1), ('ICT/2024/006','ICT1222',1,1), ('ICT/2024/006','ICT1252',1,1),
+('ICT/2024/006','ICT1242',1,1), ('ICT/2024/006','ICT1232',1,1), ('ICT/2024/006','ICT1212',1,1),
 
-('ICT/2024/007','ICT1202',1,1), ('ICT/2024/007','ICT1204',1,1), ('ICT/2024/007','ICT1206',1,1),
-('ICT/2024/007','ICT1208',1,1), ('ICT/2024/007','ICT1210',1,1), ('ICT/2024/007','ICT1212',1,1),
+('ICT/2024/007','ICT1261',1,1), ('ICT/2024/007','ICT1222',1,1), ('ICT/2024/007','ICT1252',1,1),
+('ICT/2024/007','ICT1242',1,1), ('ICT/2024/007','ICT1232',1,1), ('ICT/2024/007','ICT1212',1,1),
 
-('ICT/2024/008','ICT1202',1,1), ('ICT/2024/008','ICT1204',1,1), ('ICT/2024/008','ICT1206',1,1),
-('ICT/2024/008','ICT1208',1,1), ('ICT/2024/008','ICT1210',1,1), ('ICT/2024/008','ICT1212',1,1),
+('ICT/2024/008','ICT1261',1,1), ('ICT/2024/008','ICT1222',1,1), ('ICT/2024/008','ICT1252',1,1),
+('ICT/2024/008','ICT1242',1,1), ('ICT/2024/008','ICT1232',1,1), ('ICT/2024/008','ICT1212',1,1),
 
-('ICT/2024/009','ICT1202',1,1), ('ICT/2024/009','ICT1204',1,1), ('ICT/2024/009','ICT1206',1,1),
-('ICT/2024/009','ICT1208',1,1), ('ICT/2024/009','ICT1210',1,1), ('ICT/2024/009','ICT1212',1,1),
+('ICT/2024/009','ICT1261',1,1), ('ICT/2024/009','ICT1222',1,1), ('ICT/2024/009','ICT1252',1,1),
+('ICT/2024/009','ICT1242',1,1), ('ICT/2024/009','ICT1232',1,1), ('ICT/2024/009','ICT1212',1,1),
 
-('ICT/2024/010','ICT1202',1,1), ('ICT/2024/010','ICT1204',1,1), ('ICT/2024/010','ICT1206',1,1),
-('ICT/2024/010','ICT1208',1,1), ('ICT/2024/010','ICT1210',1,1), ('ICT/2024/010','ICT1212',1,1),
+('ICT/2024/010','ICT1261',1,1), ('ICT/2024/010','ICT1222',1,1), ('ICT/2024/010','ICT1252',1,1),
+('ICT/2024/010','ICT1242',1,1), ('ICT/2024/010','ICT1232',1,1), ('ICT/2024/010','ICT1212',1,1),
 
-('ICT/2022/011','ICT1202',1,1), ('ICT/2022/011','ICT1204',1,1), ('ICT/2022/011','ICT1206',1,1),
-('ICT/2022/011','ICT1208',1,1), ('ICT/2022/011','ICT1210',1,1), ('ICT/2022/011','ICT1212',1,1),
+('ICT/2022/011','ICT1261',1,1), ('ICT/2022/011','ICT1222',1,1), ('ICT/2022/011','ICT1252',1,1),
+('ICT/2022/011','ICT1242',1,1), ('ICT/2022/011','ICT1232',1,1), ('ICT/2022/011','ICT1212',1,1),
 
-('ICT/2022/012','ICT1202',1,1), ('ICT/2022/012','ICT1204',1,1), ('ICT/2022/012','ICT1206',1,1),
-('ICT/2022/012','ICT1208',1,1), ('ICT/2022/012','ICT1210',1,1), ('ICT/2022/012','ICT1212',1,1),
+('ICT/2022/012','ICT1261',1,1), ('ICT/2022/012','ICT1222',1,1), ('ICT/2022/012','ICT1252',1,1),
+('ICT/2022/012','ICT1242',1,1), ('ICT/2022/012','ICT1232',1,1), ('ICT/2022/012','ICT1212',1,1),
 
-('ICT/2023/013','ICT1202',1,1), ('ICT/2023/013','ICT1204',1,1), ('ICT/2023/013','ICT1206',1,1),
-('ICT/2023/013','ICT1208',1,1), ('ICT/2023/013','ICT1210',1,1), ('ICT/2023/013','ICT1212',1,1),
+('ICT/2023/013','ICT1261',1,1), ('ICT/2023/013','ICT1222',1,1), ('ICT/2023/013','ICT1252',1,1),
+('ICT/2023/013','ICT1242',1,1), ('ICT/2023/013','ICT1232',1,1), ('ICT/2023/013','ICT1212',1,1),
 
-('ICT/2023/014','ICT1202',1,1), ('ICT/2023/014','ICT1204',1,1), ('ICT/2023/014','ICT1206',1,1),
-('ICT/2023/014','ICT1208',1,1), ('ICT/2023/014','ICT1210',1,1), ('ICT/2023/014','ICT1212',1,1),
+('ICT/2023/014','ICT1261',1,1), ('ICT/2023/014','ICT1222',1,1), ('ICT/2023/014','ICT1252',1,1),
+('ICT/2023/014','ICT1242',1,1), ('ICT/2023/014','ICT1232',1,1), ('ICT/2023/014','ICT1212',1,1),
 
-('ICT/2023/015','ICT1202',1,1), ('ICT/2023/015','ICT1204',1,1), ('ICT/2023/015','ICT1206',1,1),
-('ICT/2023/015','ICT1208',1,1), ('ICT/2023/015','ICT1210',1,1), ('ICT/2023/015','ICT1212',1,1);
+('ICT/2023/015','ICT1261',1,1), ('ICT/2023/015','ICT1222',1,1), ('ICT/2023/015','ICT1252',1,1),
+('ICT/2023/015','ICT1242',1,1), ('ICT/2023/015','ICT1232',1,1), ('ICT/2023/015','ICT1212',1,1);
 
 -- ============================================================
 -- 19. FINAL MARKS TABLE
@@ -855,67 +855,67 @@ INSERT INTO Eligibility (Student_id, Course_id, attendance_eligibility, ca_eligi
 -- Students with eligibility=0 are marked as absent (NULL-like 0.00)
 -- ============================================================
 INSERT INTO Final_Mark (student_id, course_id, final_mark, grade) VALUES
-('ICT/2024/001','ICT1202',72.00,'B+'), ('ICT/2024/001','ICT1204',68.00,'B'),
-('ICT/2024/001','ICT1206',75.00,'A-'), ('ICT/2024/001','ICT1208',70.00,'B+'),
-('ICT/2024/001','ICT1210',73.00,'B+'), ('ICT/2024/001','ICT1212',69.00,'B'),
+('ICT/2024/001','ICT1261',72.00,'B+'), ('ICT/2024/001','ICT1222',68.00,'B'),
+('ICT/2024/001','ICT1252',75.00,'A-'), ('ICT/2024/001','ICT1242',70.00,'B+'),
+('ICT/2024/001','ICT1232',73.00,'B+'), ('ICT/2024/001','ICT1212',69.00,'B'),
 
-('ICT/2024/002','ICT1202',65.00,'B'),  ('ICT/2024/002','ICT1204',60.00,'B-'),
-('ICT/2024/002','ICT1206',67.00,'B'),  ('ICT/2024/002','ICT1208',63.00,'B-'),
-('ICT/2024/002','ICT1210',66.00,'B'),  ('ICT/2024/002','ICT1212',61.00,'B-'),
+('ICT/2024/002','ICT1261',65.00,'B'),  ('ICT/2024/002','ICT1222',60.00,'B-'),
+('ICT/2024/002','ICT1252',67.00,'B'),  ('ICT/2024/002','ICT1242',63.00,'B-'),
+('ICT/2024/002','ICT1232',66.00,'B'),  ('ICT/2024/002','ICT1212',61.00,'B-'),
 
-('ICT/2024/003','ICT1202',78.00,'A-'), ('ICT/2024/003','ICT1204',74.00,'B+'),
-('ICT/2024/003','ICT1206',80.00,'A'),  ('ICT/2024/003','ICT1208',76.00,'A-'),
-('ICT/2024/003','ICT1210',79.00,'A-'), ('ICT/2024/003','ICT1212',75.00,'A-'),
+('ICT/2024/003','ICT1261',78.00,'A-'), ('ICT/2024/003','ICT1222',74.00,'B+'),
+('ICT/2024/003','ICT1252',80.00,'A'),  ('ICT/2024/003','ICT1242',76.00,'A-'),
+('ICT/2024/003','ICT1232',79.00,'A-'), ('ICT/2024/003','ICT1212',75.00,'A-'),
 
-('ICT/2024/004','ICT1202',55.00,'C+'), ('ICT/2024/004','ICT1204',52.00,'C'),
-('ICT/2024/004','ICT1206',58.00,'C+'), ('ICT/2024/004','ICT1208',53.00,'C'),
-('ICT/2024/004','ICT1210',56.00,'C+'), ('ICT/2024/004','ICT1212',50.00,'C'),
+('ICT/2024/004','ICT1261',55.00,'C+'), ('ICT/2024/004','ICT1222',52.00,'C'),
+('ICT/2024/004','ICT1252',58.00,'C+'), ('ICT/2024/004','ICT1242',53.00,'C'),
+('ICT/2024/004','ICT1232',56.00,'C+'), ('ICT/2024/004','ICT1212',50.00,'C'),
 
--- ICT/2024/005 ineligible for ICT1202 and ICT1204 finals
-('ICT/2024/005','ICT1202',0.00,'X'),   ('ICT/2024/005','ICT1204',0.00,'X'),
-('ICT/2024/005','ICT1206',42.00,'C-'), ('ICT/2024/005','ICT1208',45.00,'C'),
-('ICT/2024/005','ICT1210',40.00,'C-'), ('ICT/2024/005','ICT1212',38.00,'D+'),
+-- ICT/2024/005 ineligible for ICT1261 and ICT1222 finals
+('ICT/2024/005','ICT1261',0.00,'X'),   ('ICT/2024/005','ICT1222',0.00,'X'),
+('ICT/2024/005','ICT1252',42.00,'C-'), ('ICT/2024/005','ICT1242',45.00,'C'),
+('ICT/2024/005','ICT1232',40.00,'C-'), ('ICT/2024/005','ICT1212',38.00,'D+'),
 
-('ICT/2024/006','ICT1202',70.00,'B+'), ('ICT/2024/006','ICT1204',66.00,'B'),
-('ICT/2024/006','ICT1206',72.00,'B+'), ('ICT/2024/006','ICT1208',68.00,'B'),
-('ICT/2024/006','ICT1210',71.00,'B+'), ('ICT/2024/006','ICT1212',65.00,'B'),
+('ICT/2024/006','ICT1261',70.00,'B+'), ('ICT/2024/006','ICT1222',66.00,'B'),
+('ICT/2024/006','ICT1252',72.00,'B+'), ('ICT/2024/006','ICT1242',68.00,'B'),
+('ICT/2024/006','ICT1232',71.00,'B+'), ('ICT/2024/006','ICT1212',65.00,'B'),
 
-('ICT/2024/007','ICT1202',68.00,'B'),  ('ICT/2024/007','ICT1204',64.00,'B-'),
-('ICT/2024/007','ICT1206',70.00,'B+'), ('ICT/2024/007','ICT1208',66.00,'B'),
-('ICT/2024/007','ICT1210',69.00,'B'),  ('ICT/2024/007','ICT1212',62.00,'B-'),
+('ICT/2024/007','ICT1261',68.00,'B'),  ('ICT/2024/007','ICT1222',64.00,'B-'),
+('ICT/2024/007','ICT1252',70.00,'B+'), ('ICT/2024/007','ICT1242',66.00,'B'),
+('ICT/2024/007','ICT1232',69.00,'B'),  ('ICT/2024/007','ICT1212',62.00,'B-'),
 
-('ICT/2024/008','ICT1202',73.00,'B+'), ('ICT/2024/008','ICT1204',69.00,'B'),
-('ICT/2024/008','ICT1206',76.00,'A-'), ('ICT/2024/008','ICT1208',71.00,'B+'),
-('ICT/2024/008','ICT1210',74.00,'B+'), ('ICT/2024/008','ICT1212',70.00,'B+'),
+('ICT/2024/008','ICT1261',73.00,'B+'), ('ICT/2024/008','ICT1222',69.00,'B'),
+('ICT/2024/008','ICT1252',76.00,'A-'), ('ICT/2024/008','ICT1242',71.00,'B+'),
+('ICT/2024/008','ICT1232',74.00,'B+'), ('ICT/2024/008','ICT1212',70.00,'B+'),
 
-('ICT/2024/009','ICT1202',85.00,'A'),  ('ICT/2024/009','ICT1204',82.00,'A'),
-('ICT/2024/009','ICT1206',88.00,'A+'), ('ICT/2024/009','ICT1208',83.00,'A'),
-('ICT/2024/009','ICT1210',86.00,'A'),  ('ICT/2024/009','ICT1212',80.00,'A'),
+('ICT/2024/009','ICT1261',85.00,'A'),  ('ICT/2024/009','ICT1222',82.00,'A'),
+('ICT/2024/009','ICT1252',88.00,'A+'), ('ICT/2024/009','ICT1242',83.00,'A'),
+('ICT/2024/009','ICT1232',86.00,'A'),  ('ICT/2024/009','ICT1212',80.00,'A'),
 
-('ICT/2024/010','ICT1202',62.00,'B-'), ('ICT/2024/010','ICT1204',58.00,'C+'),
-('ICT/2024/010','ICT1206',64.00,'B-'), ('ICT/2024/010','ICT1208',60.00,'B-'),
-('ICT/2024/010','ICT1210',63.00,'B-'), ('ICT/2024/010','ICT1212',56.00,'C+'),
+('ICT/2024/010','ICT1261',62.00,'B-'), ('ICT/2024/010','ICT1222',58.00,'C+'),
+('ICT/2024/010','ICT1252',64.00,'B-'), ('ICT/2024/010','ICT1242',60.00,'B-'),
+('ICT/2024/010','ICT1232',63.00,'B-'), ('ICT/2024/010','ICT1212',56.00,'C+'),
 
 -- Repeat students
-('ICT/2022/011','ICT1202',67.00,'B'),  ('ICT/2022/011','ICT1204',63.00,'B-'),
-('ICT/2022/011','ICT1206',69.00,'B'),  ('ICT/2022/011','ICT1208',65.00,'B'),
-('ICT/2022/011','ICT1210',68.00,'B'),  ('ICT/2022/011','ICT1212',64.00,'B-'),
+('ICT/2022/011','ICT1261',67.00,'B'),  ('ICT/2022/011','ICT1222',63.00,'B-'),
+('ICT/2022/011','ICT1252',69.00,'B'),  ('ICT/2022/011','ICT1242',65.00,'B'),
+('ICT/2022/011','ICT1232',68.00,'B'),  ('ICT/2022/011','ICT1212',64.00,'B-'),
 
-('ICT/2022/012','ICT1202',60.00,'B-'), ('ICT/2022/012','ICT1204',56.00,'C+'),
-('ICT/2022/012','ICT1206',62.00,'B-'), ('ICT/2022/012','ICT1208',58.00,'C+'),
-('ICT/2022/012','ICT1210',61.00,'B-'), ('ICT/2022/012','ICT1212',55.00,'C+'),
+('ICT/2022/012','ICT1261',60.00,'B-'), ('ICT/2022/012','ICT1222',56.00,'C+'),
+('ICT/2022/012','ICT1252',62.00,'B-'), ('ICT/2022/012','ICT1242',58.00,'C+'),
+('ICT/2022/012','ICT1232',61.00,'B-'), ('ICT/2022/012','ICT1212',55.00,'C+'),
 
-('ICT/2023/013','ICT1202',50.00,'C'),  ('ICT/2023/013','ICT1204',47.00,'C-'),
-('ICT/2023/013','ICT1206',52.00,'C'),  ('ICT/2023/013','ICT1208',48.00,'C-'),
-('ICT/2023/013','ICT1210',51.00,'C'),  ('ICT/2023/013','ICT1212',45.00,'C-'),
+('ICT/2023/013','ICT1261',50.00,'C'),  ('ICT/2023/013','ICT1222',47.00,'C-'),
+('ICT/2023/013','ICT1252',52.00,'C'),  ('ICT/2023/013','ICT1242',48.00,'C-'),
+('ICT/2023/013','ICT1232',51.00,'C'),  ('ICT/2023/013','ICT1212',45.00,'C-'),
 
-('ICT/2023/014','ICT1202',63.00,'B-'), ('ICT/2023/014','ICT1204',59.00,'C+'),
-('ICT/2023/014','ICT1206',65.00,'B'),  ('ICT/2023/014','ICT1208',61.00,'B-'),
-('ICT/2023/014','ICT1210',64.00,'B-'), ('ICT/2023/014','ICT1212',57.00,'C+'),
+('ICT/2023/014','ICT1261',63.00,'B-'), ('ICT/2023/014','ICT1222',59.00,'C+'),
+('ICT/2023/014','ICT1252',65.00,'B'),  ('ICT/2023/014','ICT1242',61.00,'B-'),
+('ICT/2023/014','ICT1232',64.00,'B-'), ('ICT/2023/014','ICT1212',57.00,'C+'),
 
-('ICT/2023/015','ICT1202',54.00,'C+'), ('ICT/2023/015','ICT1204',50.00,'C'),
-('ICT/2023/015','ICT1206',56.00,'C+'), ('ICT/2023/015','ICT1208',52.00,'C'),
-('ICT/2023/015','ICT1210',55.00,'C+'), ('ICT/2023/015','ICT1212',48.00,'C-');
+('ICT/2023/015','ICT1261',54.00,'C+'), ('ICT/2023/015','ICT1222',50.00,'C'),
+('ICT/2023/015','ICT1252',56.00,'C+'), ('ICT/2023/015','ICT1242',52.00,'C'),
+('ICT/2023/015','ICT1232',55.00,'C+'), ('ICT/2023/015','ICT1212',48.00,'C-');
 
 -- ============================================================
 -- END OF SAMPLE DATA
@@ -926,12 +926,12 @@ INSERT INTO Final_Mark (student_id, course_id, final_mark, grade) VALUES
 --   Department   : 1 (ICT)
 --   Course Units : 6 (L01S02 ICT timetable)
 --   Sessions     : 150 (theory + practical for 15 weeks per course)
---   Attendance   : Full records for ICT1202 (all 15 students x 30 sessions)
+--   Attendance   : Full records for ICT1261 (all 15 students x 30 sessions)
 --                  + representative records for other courses
 --   Medical      : 3 records (1 approved, 1 pending, 1 approved for 005/011)
 --   Assignments  : 17 across all 6 course units
 --   Student Marks: Records for students 001-005 and 011 across all assignments
 --   GPA          : All 15 students
---   Eligibility  : All 15 students x 6 courses (005 fails ICT1202,ICT1204)
+--   Eligibility  : All 15 students x 6 courses (005 fails ICT1261,ICT1222)
 --   Final Marks  : All 15 students x 6 courses
 -- ============================================================
