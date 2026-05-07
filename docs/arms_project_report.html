@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ARMS – Attendance and Results Management System | ICT1222 Mini Project Report</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, "Times New Roman", "Times", serif;
+      font-size: 11pt;
+      line-height: 1.8;
+      background: #e8e8e8;
+      color: #1a1a1a;
+      padding: 40px 0;
+    }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      height: 297mm;
+      background: #ffffff;
+      margin: 0 auto 36px auto;
+      padding: 25mm 20mm 25mm 30mm;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.20);
+      border-radius: 1px;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(297mm - 50mm);
+      text-align: center;
+      gap: 16px;
+    }
+    .cover-logo {
+      font-size: 10pt;
+      color: #555;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .cover h1 {
+      font-size: 22pt;
+      color: #1a2a4a;
+      border: none;
+      padding: 0;
+      line-height: 1.3;
+      max-width: 90%;
+    }
+    .report-type {
+      font-size: 12pt;
+      color: #2e6da4;
+      font-style: italic;
+      margin-top: 4px;
+    }
+    .cover-divider {
+      width: 80px;
+      height: 3px;
+      background: #2e6da4;
+      margin: 10px auto;
+    }
+    .cover .meta {
+      font-size: 10.5pt;
+      color: #333;
+      line-height: 2.1;
+    }
+    .cover .meta strong { color: #1a2a4a; }
+    .cover .date { font-size: 10pt; color: #888; margin-top: 16px; }
+    .team-table {
+      border-collapse: collapse;
+      margin: 10px auto;
+      font-size: 10pt;
+    }
+    .team-table th {
+      background: #1a2a4a;
+      color: #fff;
+      padding: 6px 16px;
+      border: 1px solid #7a8fa6;
+      text-align: left;
+    }
+    .team-table td {
+      padding: 5px 16px;
+      border: 1px solid #b0bec5;
+    }
+    .team-table tr:nth-child(even) td { background: #f4f8fc; }
+
+    h1 {
+      font-size: 17pt;
+      color: #1a2a4a;
+      border-bottom: 3px solid #2e6da4;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      margin-top: 10px;
+    }
+    h2 {
+      font-size: 13.5pt;
+      color: #1a2a4a;
+      margin-top: 26px;
+      margin-bottom: 10px;
+      border-left: 5px solid #2e6da4;
+      padding-left: 10px;
+    }
+    h3 {
+      font-size: 12pt;
+      color: #1a2a4a;
+      margin-top: 18px;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    h4 {
+      font-size: 11pt;
+      color: #444;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    p { margin-bottom: 10px; text-align: justify; }
+    ul, ol { margin: 10px 0 10px 24px; }
+    li { margin-bottom: 5px; }
+
+    .abstract-box {
+      border: 1px solid #2e6da4;
+      border-radius: 3px;
+      padding: 14px 18px;
+      background: #f7fbff;
+      margin: 14px 0 20px 0;
+    }
+    .abstract-box p { margin: 0; font-style: italic; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 10pt;
+    }
+    th {
+      background: #1a2a4a;
+      color: #fff;
+      padding: 8px 12px;
+      text-align: left;
+      border: 1px solid #7a8fa6;
+      font-weight: bold;
+    }
+    td {
+      padding: 7px 12px;
+      border: 1px solid #b0bec5;
+    }
+    tr:nth-child(even) td { background: #f4f8fc; }
+    .table-caption {
+      font-size: 9.5pt;
+      color: #555;
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    figure {
+      margin: 16px 0;
+      text-align: center;
+    }
+    figcaption {
+      font-size: 9.5pt;
+      color: #555;
+      font-style: italic;
+      margin-top: 6px;
+    }
+    pre {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-left: 4px solid #2e6da4;
+      padding: 12px 16px;
+      border-radius: 3px;
+      overflow-x: auto;
+      font-family: "Courier New", "Consolas", monospace;
+      font-size: 8.5pt;
+      line-height: 1.5;
+      margin: 12px 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    code {
+      font-family: "Courier New", "Consolas", monospace;
+      background: #f0f0f0;
+      padding: 1px 5px;
+      border-radius: 2px;
+      font-size: 9.5pt;
+    }
+    blockquote {
+      border-left: 4px solid #2e6da4;
+      background: #eaf3fb;
+      padding: 10px 16px;
+      margin: 14px 0;
+      border-radius: 0 3px 3px 0;
+      font-style: italic;
+    }
+    .note {
+      background: #eaf3fb;
+      border: 1px solid #b3d4f0;
+      border-radius: 3px;
+      padding: 10px 14px;
+      margin: 12px 0;
+    }
+    .warning {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 3px;
+      padding: 10px 14px;
+      margin: 12px 0;
+    }
+    .toc { list-style: none; margin: 10px 0; padding: 0; }
+    .toc li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted #ccc;
+      padding: 4px 0;
+      margin-bottom: 0;
+    }
+    .toc li a { color: #1a2a4a; text-decoration: none; }
+    .toc li a:hover { text-decoration: underline; }
+    .toc .toc-page { color: #888; font-size: 10pt; }
+    .toc-h2 { font-weight: bold; margin-top: 6px; }
+    .toc-h3 { padding-left: 20px; font-size: 10.5pt; color: #444; }
+    .declaration { border: 1px solid #ccc; padding: 16px 20px; margin: 20px 0; border-radius: 3px; }
+    .signature-line { border-bottom: 1px solid #333; width: 200px; margin-top: 30px; display: inline-block; }
+    .page-num { text-align: right; font-size: 9pt; color: #888; position: absolute; bottom: 20mm; right: 20mm; }
+    .page-num-center { text-align: center; font-size: 9pt; color: #888; position: absolute; bottom: 20mm; left: 0; right: 0; }
+    hr { border: none; border-top: 2px solid #2e6da4; margin: 20px 0; }
+    .ref-list { list-style: none; padding: 0; counter-reset: ref-counter; }
+    .ref-list li {
+      counter-increment: ref-counter;
+      padding: 5px 0 5px 36px;
+      border-bottom: 1px dotted #e0e0e0;
+      font-size: 10pt;
+      position: relative;
+    }
+    .ref-list li::before {
+      content: "[" counter(ref-counter) "]";
+      position: absolute;
+      left: 0;
+      color: #2e6da4;
+      font-weight: bold;
+    }
+    .badge {
+      display: inline-block;
+      background: #2e6da4;
+      color: #fff;
+      font-size: 8.5pt;
+      padding: 1px 7px;
+      border-radius: 10px;
+      font-family: "Courier New", monospace;
+      vertical-align: middle;
+    }
+    .schema-box {
+      background: #f5f9ff;
+      border: 1px solid #c4d9ef;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin: 10px 0;
+      font-size: 9.5pt;
+    }
+    /* File structure tree styling */
+    .file-tree {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-left: 4px solid #2e6da4;
+      padding: 14px 18px;
+      border-radius: 3px;
+      font-family: "Courier New", "Consolas", monospace;
+      font-size: 8.5pt;
+      line-height: 1.7;
+      margin: 12px 0;
+    }
+    .file-tree .tree-root { font-weight: bold; color: #1a2a4a; font-size: 9pt; }
+    .file-tree .tree-dir { color: #2e6da4; font-weight: bold; }
+    .file-tree .tree-file { color: #333; }
+    .file-tree .tree-comment { color: #888; font-style: italic; }
+    @page { size: A4; margin: 25mm 20mm 25mm 30mm; }
+    @media print {
+      body { background: none; padding: 0; }
+      .page { box-shadow: none; margin: 0; border-radius: 0; page-break-after: always; width: 100%; padding: 25mm 20mm 25mm 30mm; overflow: visible; height: auto; min-height: unset; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ COVER PAGE - FULLSCREEN IMAGE ══ -->
+<div class="page" style="padding: 0; margin: 0 auto 36px auto; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+  <img src="1.jpg" alt="Cover Image" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  
+  <!-- Group Number -->
+  <div style="position: absolute; top: 610px; left: 340px; padding: 5px 30px; font-size: large; background: #fff;">
+    Group 08
+  </div>
+  
+  <!-- Index Numbers -->
+  <div style="position: absolute; bottom: 180px; right: 0px; padding: 5px 110px 5px 30px; font-size: large; background: #fff;">
+    <div>TG/2024/2073</div>
+    <div>TG/2024/2100</div>
+    <div>TG/2024/2106</div>
+    <div>TG/2024/2120</div>
+  </div>
+  <div style="position: absolute; width: 200px; height: 50px; bottom: 110px; right: 300px; font-size: large; background: #fff;">
+</div>
+</div>
+
+<!-- ══ DECLARATION ══ -->
+<div class="page" id="declaration">
+  <h1>Declaration</h1>
+  <div class="declaration">
+    <p>The undersigned hereby declare that this project report and all associated database artefacts submitted for ICT1222 – Database Management Systems Practicum (Assignment 01) represent original work produced collectively by the group. All external sources of information consulted during the course of this project have been duly acknowledged and cited in accordance with academic convention.</p>
+    <p style="margin-top:12px;">It is further declared that this report has not been submitted, in whole or in part, for any other academic award or assessment.</p>
+    <p style="margin-top:20px;font-style:italic;">Note: Sample data contained within the project database was created and validated by the group member designated TG/2024/2120 to ensure consistency, referential integrity, and alignment with the domain requirements.</p>
+    <br>
+    <table style="border:none;margin:0;font-size:10.5pt;">
+      <tr style="border:none;">
+        <td style="border:none;padding:4px 20px 4px 0;">TG/2024/2073</td>
+        <!-- <td style="border:none;padding:4px 0;"><span class="signature-line"></span></td> -->
+      </tr>
+      <tr style="border:none;">
+        <td style="border:none;padding:4px 20px 4px 0;">TG/2024/2100</td>
+        <!-- <td style="border:none;padding:4px 0;"><span class="signature-line"></span></td> -->
+      </tr>
+      <tr style="border:none;">
+        <td style="border:none;padding:4px 20px 4px 0;">TG/2024/2106</td>
+        <!-- <td style="border:none;padding:4px 0;"><span class="signature-line"></span></td> -->
+      </tr>
+      <tr style="border:none;">
+        <td style="border:none;padding:4px 20px 4px 0;">TG/2024/2120</td>
+        <!-- <td style="border:none;padding:4px 0;"><span class="signature-line"></span></td> -->
+      </tr>
+    </table>
+<p class="" style="margin: 10px 0;">Date : 2026-05-07</p>
+  </div>
+</div>
+
+<!-- ══ ABSTRACT ══ -->
+<div class="page" id="abstract">
+  <h1>Abstract</h1>
+  <div class="abstract-box">
+<p>Academic institutions face challenges in managing student attendance and academic performance accurately and efficiently. Manual or fragmented systems often create inconsistencies and delay academic reporting. This project presents the Attendance and Results Management System (ARMS), a MySQL-based relational database solution developed for the Department of Information and Communication Technology, Faculty of Technology, University of Ruhuna, as part of the ICT1222 Database Management Systems Practicum mini-project. The system includes twenty normalised relations covering user management, enrolment, course administration, attendance tracking, medical approvals, assessment marks, eligibility determination, and grade reporting. Referential integrity is maintained through foreign key constraints, while all system roles inherit from a common <em>User</em> relation. Role-based access control was implemented using dedicated MySQL user accounts with minimum required privileges. Fourteen stored procedures and twelve database views support business logic and reporting. A dataset containing fifteen students, nine course units, 195 sessions, and thousands of records was used to validate the system. The ARMS design demonstrates that a well-normalised relational database with controlled access and reusable procedural logic can provide a reliable foundation for academic records management.</p>  </div>
+  <h2>Keywords</h2>
+  <p>Relational Database, MySQL, Attendance Management, Academic Records, Stored Procedures, Role-Based Access Control, Database Views, Eligibility Determination, Normalisation</p>
+</div>
+
+<!-- ══ ACKNOWLEDGEMENTS ══ -->
+<div class="page" id="acknowledgements">
+  <h1>Acknowledgements</h1>
+  <p>The group wishes to express sincere gratitude to the course coordinator of ICT1222 – Database Management Systems Practicum for providing the project brief, domain specifications, and academic guidance that formed the basis of this work.</p>
+  <p>Appreciation is also extended to the Department of Information and Communication Technology, Faculty of Technology, University of Ruhuna, for providing access to laboratory infrastructure and software resources necessary to develop and test the database system.</p>
+  <p>The group acknowledges the contribution of the designated group member (TG/2024/2120) in creating and validating sample data records to ensure accuracy and domain appropriateness prior to inclusion in the submitted artefacts.</p>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  <h1>Table of Contents</h1>
+  <ul class="toc">
+    <li class="toc-h2"><a href="#declaration">Declaration</a><span class="toc-page">ii</span></li>
+    <li class="toc-h2"><a href="#abstract">Abstract</a><span class="toc-page">iii</span></li>
+    <li class="toc-h2"><a href="#acknowledgements">Acknowledgements</a><span class="toc-page">iv</span></li>
+    <li class="toc-h2"><a href="#chapter1">1. Introduction</a><span class="toc-page">1</span></li>
+    <li class="toc-h3"><a href="#background">1.1 Background</a><span class="toc-page">1</span></li>
+    <li class="toc-h3"><a href="#problem">1.2 Problem Statement</a><span class="toc-page">1</span></li>
+    <li class="toc-h3"><a href="#objectives">1.3 Objectives</a><span class="toc-page">2</span></li>
+    <li class="toc-h3"><a href="#scope">1.4 Scope</a><span class="toc-page">2</span></li>
+    <li class="toc-h3"><a href="#outline">1.5 Report Outline</a><span class="toc-page">2</span></li>
+    <li class="toc-h2"><a href="#chapter2">2. System Requirements</a><span class="toc-page">3</span></li>
+    <li class="toc-h3"><a href="#functional">2.1 Functional Requirements</a><span class="toc-page">3</span></li>
+    <li class="toc-h3"><a href="#nonfunctional">2.2 Non-Functional Requirements</a><span class="toc-page">3</span></li>
+    <li class="toc-h2"><a href="#chapter3">3. System Design</a><span class="toc-page">4</span></li>
+    <li class="toc-h3"><a href="#schema">3.1 Database Schema</a><span class="toc-page">4</span></li>
+    <li class="toc-h3"><a href="#relationships">3.2 Entity Relationships</a><span class="toc-page">5</span></li>
+    <li class="toc-h3"><a href="#access">3.3 User Access Design</a><span class="toc-page">5</span></li>
+    <li class="toc-h2"><a href="#chapter4">4. Implementation</a><span class="toc-page">6</span></li>
+    <li class="toc-h3"><a href="#impl-schema">4.1 Schema Implementation</a><span class="toc-page">6</span></li>
+    <li class="toc-h3"><a href="#impl-procedures">4.2 Stored Procedures</a><span class="toc-page">7</span></li>
+    <li class="toc-h3"><a href="#impl-views">4.3 Database Views</a><span class="toc-page">8</span></li>
+    <li class="toc-h3"><a href="#impl-users">4.4 User Accounts &amp; Privileges</a><span class="toc-page">9</span></li>
+    <li class="toc-h3"><a href="#impl-data">4.5 Sample Data</a><span class="toc-page">10</span></li>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  <h1>Table of Contents</h1>
+  <ul class="toc">
+
+    <li class="toc-h2"><a href="#chapter5">5. Results and Discussion</a><span class="toc-page">11</span></li>
+    <li class="toc-h2"><a href="#chapter6">6. Conclusion</a><span class="toc-page">13</span></li>
+    <li class="toc-h3"><a href="#limitations">6.1 Limitations</a><span class="toc-page">13</span></li>
+    <li class="toc-h3"><a href="#future">6.2 Future Work</a><span class="toc-page">14</span></li>
+    <li class="toc-h2"><a href="#references">References</a><span class="toc-page">15</span></li>
+    <li class="toc-h2"><a href="#appendices">Appendices</a><span class="toc-page">16</span></li>
+  </ul>
+
+  <br>
+  <h1 style="font-size:13pt;margin-top:20px;">List of Tables</h1>
+  <ul class="toc">
+    <li><a href="#tab1">Table 1: Database Relations and Their Purpose</a><span class="toc-page">4</span></li>
+    <li><a href="#tab2">Table 2: Stored Procedures Summary</a><span class="toc-page">7</span></li>
+    <li><a href="#tab3">Table 3: Database Views Summary</a><span class="toc-page">8</span></li>
+    <li><a href="#tab4">Table 4: MySQL User Accounts and Privileges</a><span class="toc-page">9</span></li>
+    <li><a href="#tab5">Table 5: Sample Dataset Statistics</a><span class="toc-page">10</span></li>
+    <li><a href="#tab6">Table 6: Project Objectives Achievement Summary</a><span class="toc-page">12</span></li>
+  </ul>
+
+  <br>
+  <h1 style="font-size:13pt;margin-top:20px;">Project Resources</h1>
+  <p><strong>Repository:</strong> https://github.com/dev-sandakelum/project_ARMS</p>
+</div>
+
+<!-- ══ LIST OF ABBREVIATIONS ══ -->
+<div class="page">
+  <h1>List of Abbreviations</h1>
+  <table>
+    <thead><tr><th>Abbreviation</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td>ARMS</td><td>Attendance and Results Management System</td></tr>
+      <tr><td>DBMS</td><td>Database Management System</td></tr>
+      <tr><td>DDL</td><td>Data Definition Language</td></tr>
+      <tr><td>DML</td><td>Data Manipulation Language</td></tr>
+      <tr><td>ER</td><td>Entity–Relationship</td></tr>
+      <tr><td>FK</td><td>Foreign Key</td></tr>
+      <tr><td>GPA</td><td>Grade Point Average</td></tr>
+      <tr><td>ICT</td><td>Information and Communication Technology</td></tr>
+      <tr><td>PK</td><td>Primary Key</td></tr>
+      <tr><td>RBAC</td><td>Role-Based Access Control</td></tr>
+      <tr><td>SGPA</td><td>Semester Grade Point Average</td></tr>
+      <tr><td>CGPA</td><td>Cumulative Grade Point Average</td></tr>
+      <tr><td>SQL</td><td>Structured Query Language</td></tr>
+      <tr><td>TO</td><td>Technical Officer</td></tr>
+      <tr><td>UGC</td><td>University Grants Commission</td></tr>
+      <tr><td>AI</td><td>Artificial Intelligence</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ══ CHAPTER 1: INTRODUCTION ══ -->
+<div class="page" id="chapter1">
+  <h1>1. Introduction</h1>
+
+  <h2 id="background">1.1 Background</h2>
+  <p>Higher education institutions generate substantial volumes of academic records pertaining to student attendance, continuous assessment performance, medical submissions, and final examination results. The efficient management of these records is critical not only for institutional compliance and audit readiness but also for the timely communication of academic standing to students, lecturers, and administrators. The Department of Information and Communication Technology (ICT) at the Faculty of Technology, University of Ruhuna, administers a diverse portfolio of course units across multiple academic levels, each carrying attendance eligibility and continuous assessment (CA) eligibility requirements that directly determine a student's right to sit final examinations.</p>
+  <p>Conventional paper-based or spreadsheet-driven record-keeping practices are susceptible to data loss, integrity violations, and access-control failures. A purpose-built relational database management system (DBMS) offers a structured, transactionally safe, and access-controlled environment for managing these records, and forms the technological foundation upon which reporting and student-facing portals may subsequently be built.</p>
+
+  <h2 id="problem">1.2 Problem Statement</h2>
+  <p>The absence of a centralised, normalised database for attendance and academic results management within the ICT department creates several operational difficulties: duplicated or inconsistent records across lecturer and administrative spreadsheets; no automated enforcement of the 80% attendance eligibility rule; difficulty generating course result sheets and student transcripts; lack of granular access control separating what students, lecturers, technical officers, and administrators are permitted to view or modify; and no structured mechanism for recording, approving, or applying medical certificates to attendance records.</p>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  <h2 id="objectives">1.3 Objectives</h2>
+  <p>The objectives of this project are as follows:</p>
+  <ol>
+    <li>To design a fully normalised relational database schema that captures all entities and relationships relevant to attendance and results management within the ICT department.</li>
+    <li>To implement the schema in MySQL with complete referential integrity enforcement via primary and foreign key constraints.</li>
+    <li>To create role-based MySQL user accounts with the minimum privilege sets required for system administrators, lecturers, technical officers, and students.</li>
+    <li>To develop a comprehensive suite of stored procedures that encapsulate business logic for student management, attendance recording, marks entry, eligibility checking, and medical submission.</li>
+    <li>To define database views that provide pre-computed, auditable perspectives for attendance summaries, eligibility status, CA marks, final results, and student transcripts.</li>
+    <li>To populate the database with a representative sample dataset and validate schema correctness through data insertion and integrity constraint testing.</li>
+  </ol>
+
+  <h2 id="scope">1.4 Scope</h2>
+  <p>The ARMS database is scoped to Level I Semester II of the 2024/2025 academic year within the ICT department, covering nine course units. The system manages fifteen student records — comprising ten active first-year students and five repeat students — together with five lecturers, five technical officers, one dean, and one faculty administrator. The scope encompasses attendance recording per session, continuous assessment mark entry, medical certificate submission and approval, eligibility determination, GPA storage, and final grade recording. Application-layer interfaces and front-end components are explicitly outside the scope of this project.</p>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  <h2 id="outline">1.5 Report Outline</h2>
+  <p>The remainder of this report is structured as follows. Chapter 2 defines the functional and non-functional requirements of the system. Chapter 3 presents the system design, covering the database schema, entity relationships, and access design. Chapter 4 details the implementation of the schema, stored procedures, views, user accounts, and sample data. Chapter 5 presents results and discussion. Chapter 6 concludes the report with a statement of achievements, limitations, and future work recommendations.</p>
+</div>
+
+<!-- ══ CHAPTER 2: SYSTEM REQUIREMENTS ══ -->
+<div class="page" id="chapter2">
+  <h1>2. System Requirements</h1>
+
+  <h2 id="functional">2.1 Functional Requirements</h2>
+  <p>The following functional requirements were identified through analysis of the project brief and domain context:</p>
+  <ol>
+    <li><strong>User Management:</strong> The system shall store personal information for all system actors (students, lecturers, technical officers, administrators, dean) using a shared identity base.</li>
+    <li><strong>Student Enrolment:</strong> Students shall be enrolled in course units per academic year and semester.</li>
+    <li><strong>Session Management:</strong> Theory and practical sessions shall be scheduled per course unit per week across a fifteen-week semester.</li>
+    <li><strong>Attendance Recording:</strong> Technical officers and lecturers shall be able to record attendance status (Present/Absent) per student per session.</li>
+    <li><strong>Medical Submission:</strong> Students shall be able to submit medical certificates linked to absent sessions; administrators shall be able to approve or reject submissions.</li>
+    <li><strong>Marks Management:</strong> Lecturers shall be able to enter and update continuous assessment marks per student per assignment.</li>
+    <li><strong>Eligibility Determination:</strong> The system shall evaluate and store attendance eligibility (≥80% attendance) and CA eligibility per student per course.</li>
+    <li><strong>GPA and Final Results:</strong> The system shall store semester and cumulative GPA values, and final marks and letter grades per student per course unit.</li>
+    <li><strong>Reporting Views:</strong> The system shall provide pre-computed views for attendance summaries, low-attendance alerts, eligibility status, marks breakdowns, final result sheets, top performers, and student transcripts.</li>
+  </ol>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  <h2 id="nonfunctional">2.2 Non-Functional Requirements</h2>
+  <ul>
+    <li><strong>Data Integrity:</strong> All inter-table relationships shall be enforced through foreign key constraints with appropriate cascade or restrict actions.</li>
+    <li><strong>Security:</strong> Access to database objects shall be restricted according to role; no user shall be granted permissions beyond those required to fulfil their function.</li>
+    <li><strong>Maintainability:</strong> Business logic shall be encapsulated in stored procedures to minimise schema coupling in application code.</li>
+    <li><strong>Scalability:</strong> The schema shall accommodate multiple departments and academic years without structural modification.</li>
+    <li><strong>Auditability:</strong> All attendance and marks records shall be traceable to the technical officer or lecturer responsible for their entry.</li>
+  </ul>
+</div>
+
+<!-- ══ CHAPTER 3: SYSTEM DESIGN – PAGE 1 (Schema Table) ══ -->
+<div class="page" id="chapter3">
+  <h1>3. System Design</h1>
+
+  <h2 id="schema">3.1 Database Schema</h2>
+  <p>The ARMS database, named <code>project_ARMS</code>, comprises twenty relations. These were designed to satisfy the Third Normal Form (3NF), eliminating transitive and partial dependencies. The relations and their primary roles are summarised in Table 1.</p>
+
+  <table id="tab1">
+    <thead>
+      <tr><th>#</th><th>Relation</th><th>Primary Key</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>User</td><td>user_id</td><td>Base identity record for all actors</td></tr>
+      <tr><td>2</td><td>Student</td><td>reg_no</td><td>Student-specific attributes; extends User</td></tr>
+      <tr><td>3</td><td>Lecturer</td><td>lecturer_id</td><td>Lecturer designation and department link</td></tr>
+      <tr><td>4</td><td>Dean</td><td>Dean_id</td><td>Dean assignment per department</td></tr>
+      <tr><td>5</td><td>Admin</td><td>admin_id</td><td>Administrative staff with role description</td></tr>
+      <tr><td>6</td><td>TO_Officer</td><td>to_id</td><td>Technical Officer with joined date</td></tr>
+      <tr><td>7</td><td>Department</td><td>Department_id</td><td>Department with Dean and Admin links</td></tr>
+      <tr><td>8</td><td>Student_contact</td><td>(reg_no, contact)</td><td>Multi-valued contact numbers for students</td></tr>
+      <tr><td>9</td><td>Course_unit</td><td>course_code</td><td>Course units with credits and type flags</td></tr>
+      <tr><td>10</td><td>Lecturer_Course_Unit</td><td>(course_code, lecturer_id)</td><td>Lecturer-to-course assignment (M:N)</td></tr>
+      <tr><td>11</td><td>Student_Course_Unit</td><td>(reg_no, course_code)</td><td>Student enrolment (M:N)</td></tr>
+    </tbody>
+  </table>
+  
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  
+  <table id="tab1">
+    <thead>
+      <tr><th>#</th><th>Relation</th><th>Primary Key</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>12</td><td>Session</td><td>session_id</td><td>Scheduled theory or practical sessions</td></tr>
+      <tr><td>13</td><td>Attendance_Record</td><td>attendance_id</td><td>Per-student per-session attendance status</td></tr>
+      <tr><td>14</td><td>Assignment</td><td>Assignment_id</td><td>Continuous assessment items per course</td></tr>
+      <tr><td>15</td><td>Student_Marks</td><td>(reg_no, Assignment_id)</td><td>Marks obtained per student per item</td></tr>
+      <tr><td>16</td><td>Medical</td><td>medical_id</td><td>Medical certificate submissions</td></tr>
+      <tr><td>17</td><td>Medical_Cover_Date</td><td>(medical_id, covers_date)</td><td>Dates covered by each medical certificate</td></tr>
+      <tr><td>18</td><td>GPA</td><td>reg_no</td><td>Semester and cumulative GPA per student</td></tr>
+      <tr><td>19</td><td>Eligibility</td><td>(Student_id, Course_id)</td><td>Attendance and CA eligibility flags</td></tr>
+      <tr><td>20</td><td>Final_Mark</td><td>(student_id, course_id)</td><td>Final mark and letter grade per student per course</td></tr>
+    </tbody>
+  </table>
+  <p class="table-caption">Table 1: Database Relations and Their Purpose</p>
+</div>
+
+<!-- ══ CHAPTER 3: SYSTEM DESIGN – PAGE 2 (Relationships + Access) ══ -->
+<div class="page">
+  <h2 id="relationships">3.2 Entity Relationships</h2>
+  <p>The schema employs an inheritance pattern whereby all system actors extend the <em>User</em> base relation through a one-to-one foreign key relationship on <code>user_id</code>. This avoids the duplication of personal attributes (name, NIC, date of birth, email, address, gender) across role-specific tables.</p>
+  <p>Key many-to-many relationships are resolved through junction tables: <em>Lecturer_Course_Unit</em> associates lecturers with the course units they teach; <em>Student_Course_Unit</em> records student enrolment per academic year and semester; and <em>Student_Marks</em> records continuous assessment results per student per assignment item. The <em>Department</em> relation participates in bidirectional links with both <em>Dean</em> and <em>Admin</em>, resolved by deferring the foreign key assignments and populating them after both records are created.</p>
+  <p>The <em>Attendance_Record</em> relation references both <em>Session</em> and <em>Student</em>, and additionally references <em>TO_Officer</em> through the <code>FR_to_id</code> attribute, preserving an audit trail of which technical officer recorded each attendance entry. The <em>Medical</em> relation links to <em>Session</em> (the session for which the certificate is submitted), <em>Department</em> (the approving department), and <em>Student</em>, while <em>Medical_Cover_Date</em> resolves the multi-valued cover-date attribute.</p>
+
+  <h2 id="access">3.3 User Access Design</h2>
+  <p>Four MySQL user accounts were designed to implement role-based access control (RBAC), each representing a distinct actor category within the system. The principle of least privilege was applied: each account was granted only the permissions necessary to perform its defined role. Student accounts, for instance, were restricted to SELECT access on specific views rather than base tables, preventing direct access to other students' records. Stored procedure execution rights were granted selectively to lecturer and technical officer accounts to enable the use of encapsulated business logic without exposing underlying table modification rights beyond what each procedure requires.</p>
+</div>
+
+<!-- ══ CHAPTER 4: IMPLEMENTATION – PAGE 1 (4.1 Schema) ══ -->
+<div class="page" id="chapter4">
+  <h1>4. Implementation</h1>
+  <p>The ARMS database was implemented across five SQL script files, logically separated by concern: schema definition, user account management, sample data, stored procedures (distributed across five sub-files by functional area), and views (distributed across two sub-files).</p>
+
+  <h2 id="impl-schema">4.1 Schema Implementation</h2>
+  <p>The schema was implemented in the script <code>01_schema.sql</code>. The script begins with the creation of the <code>project_ARMS</code> database and proceeds to define all twenty tables using <code>CREATE TABLE</code> statements. Foreign key constraints were added in a second pass via <code>ALTER TABLE</code> statements to avoid circular dependency failures at creation time — a pattern necessitated by the bidirectional relationship between <em>Department</em>, <em>Dean</em>, and <em>Admin</em>.</p>
+  <p>Notable design decisions include the use of <code>ENUM('Present','Absent')</code> for the <code>status</code> field in <em>Attendance_Record</em>, constraining valid values at the database level; the use of <code>TINYINT(1)</code> as a boolean surrogate for flags such as <code>has_practical</code>, <code>has_theory</code>, <code>is_medical</code>, and eligibility indicators; and the use of <code>DECIMAL(5,2)</code> for all mark and GPA fields to ensure precise decimal arithmetic without floating-point rounding errors.</p>
+  <p>A representative excerpt of the schema for the core <em>Attendance_Record</em> table is shown below:</p>
+  <pre><code>CREATE TABLE Attendance_Record (
+    attendance_id INT PRIMARY KEY AUTO_INCREMENT,
+    session_id    INT,
+    reg_no        VARCHAR(20),
+    status        ENUM('Present','Absent'),
+    FR_to_id      INT
+);</code></pre>
+
+  <h2 id="impl-procedures">4.2 Stored Procedures</h2>
+  <p>Fourteen stored procedures were implemented across five files grouped by functional domain: student management, attendance management, marks management, course management, eligibility management, and medical management. Table 2 provides a summary of each procedure and its purpose.</p>
+</div>
+
+<!-- ══ CHAPTER 4 CONT – Stored Procedures Table ══ -->
+<div class="page">
+  <table id="tab2">
+    <thead>
+      <tr><th>File</th><th>Procedure</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>01_student</td><td>AddStudent</td><td>Inserts a new user and student record atomically</td></tr>
+      <tr><td>01_student</td><td>UpdateStudentStatus</td><td>Updates the status field of a student record</td></tr>
+      <tr><td>01_student</td><td>GetStudentDetails</td><td>Retrieves full student profile via User join</td></tr>
+      <tr><td>02_attendance</td><td>MarkAttendance</td><td>Inserts an attendance record for a session</td></tr>
+      <tr><td>02_attendance</td><td>GetStudentAttendance</td><td>Returns all session attendance for a student in a course</td></tr>
+      <tr><td>02_attendance</td><td>CalculateAttendancePercentage</td><td>Computes attendance percentage per student per course</td></tr>
+      <tr><td>03_marks</td><td>AddAssignmentMarks</td><td>Inserts a mark record for a student assignment</td></tr>
+      <tr><td>03_marks</td><td>UpdateAssignmentMarks</td><td>Updates a previously entered mark</td></tr>
+      <tr><td>03_marks</td><td>GetStudentMarksForCourse</td><td>Returns all marks and percentages for a course</td></tr>
+      <tr><td>03_marks</td><td>CalculateTotalCAMarks</td><td>Aggregates total CA marks and percentage per course</td></tr>
+      <tr><td>04_course</td><td>EnrollStudentInCourse</td><td>Enrolls a student in a course unit for a given semester</td></tr>
+      <tr><td>04_course</td><td>GetStudentCourses</td><td>Returns all course enrolments for a student</td></tr>
+      <tr><td>04_course</td><td>GetCourseStudents</td><td>Returns all students enrolled in a course</td></tr>
+
+
+</tbody>
+  </table>
+  
+  
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  
+  <table id="tab1">
+    <thead>
+      <tr><th>File</th><th>Procedure</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+
+
+      <tr><td>05_eligibility</td><td>CheckAttendanceEligibility</td><td>Evaluates and returns eligibility based on 80% rule</td></tr>
+      <tr><td>05_eligibility</td><td>UpdateEligibilityStatus</td><td>Upserts eligibility flags for a student-course pair</td></tr>
+      <tr><td>05_eligibility</td><td>GetStudentEligibility</td><td>Returns eligibility status across all enrolled courses</td></tr>
+      <tr><td>06_medical</td><td>SubmitMedical</td><td>Creates a new pending medical submission record</td></tr>
+      <tr><td>06_medical</td><td>ApproveMedical</td><td>Updates approval status of a medical record</td></tr>
+      <tr><td>06_medical</td><td>GetStudentMedicals</td><td>Returns all medical submissions for a student</td></tr>
+    </tbody>
+  </table>
+  <p class="table-caption">Table 2: Stored Procedures Summary</p>
+</div>
+
+<!-- ══ CHAPTER 4 CONT – Database Views ══ -->
+<div class="page">
+  <h2 id="impl-views">4.3 Database Views</h2>
+  <p>Twelve database views were defined across two scripts to provide pre-computed, reusable query perspectives for different consumer roles. Views were preferred over ad-hoc queries for reporting purposes because they centralise complex join logic, simplify application queries, and can be access-controlled independently of their underlying base tables. Table 3 summarises each view.</p>
+
+  <table id="tab3">
+    <thead>
+      <tr><th>View Name</th><th>Domain</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>vw_student_profile</td><td>Attendance</td><td>Full student profile via User join</td></tr>
+      <tr><td>vw_session_details</td><td>Attendance</td><td>Session details enriched with course and department data</td></tr>
+      <tr><td>vw_attendance_full</td><td>Attendance</td><td>Complete attendance record with student, session, and TO officer names</td></tr>
+      <tr><td>vw_student_attendance_summary</td><td>Attendance</td><td>Aggregated present/absent counts per student per course per session type</td></tr>
+      <tr><td>vw_attendance_percentage</td><td>Attendance</td><td>Attendance percentage per student per course</td></tr>
+      <tr><td>vw_attendance_eligibility</td><td>Attendance</td><td>Eligibility status derived from the Eligibility table</td></tr>
+      <tr><td>vw_low_attendance</td><td>Attendance</td><td>Students with attendance below 80%, ordered ascending</td></tr>
+      <tr><td>vw_medical_status</td><td>Attendance</td><td>Medical submissions with approval status and covered dates</td></tr>
+      <tr><td>vw_student_marks_detail</td><td>Marks</td><td>Per-assignment marks with percentage calculations</td></tr>
+      <tr><td>vw_ca_summary</td><td>Marks</td><td>Total CA marks and percentage per student per course</td></tr>
+
+
+</tbody>
+  </table>
+  
+  
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  
+  <table id="tab1">
+    <thead>
+            <tr><th>View Name</th><th>Domain</th><th>Purpose</th></tr>
+
+    </thead>
+    <tbody>
+      
+      <tr><td>vw_ca_eligibility</td><td>Marks</td><td>CA eligibility status from the Eligibility table</td></tr>
+      <tr><td>vw_eligibility_full</td><td>Marks</td><td>Combined attendance and CA eligibility with descriptive status label</td></tr>
+      <tr><td>vw_final_results</td><td>Marks</td><td>Final marks and grades with pass/fail/barred status</td></tr>
+      <tr><td>vw_student_transcript</td><td>Marks</td><td>Full transcript with GPA values per student</td></tr>
+      <tr><td>vw_course_result_sheet</td><td>Marks</td><td>Per-course result sheet ordered by final mark descending</td></tr>
+      <tr><td>vw_top_performers</td><td>Marks</td><td>Students achieving final mark ≥ 80.00 and not barred</td></tr>
+    </tbody>
+  </table>
+  <p class="table-caption">Table 3: Database Views Summary</p>
+</div>
+
+<!-- ══ CHAPTER 4 CONT – User Accounts ══ -->
+<div class="page">
+  <h2 id="impl-users">4.4 User Accounts and Privileges</h2>
+  <p>Four MySQL user accounts were created in <code>02_users.sql</code>, one for each actor category. Table 4 documents the accounts and their associated privilege sets.</p>
+
+  <table id="tab4">
+    <thead>
+      <tr><th>Account</th><th>Role</th><th>Privileges Granted</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>arms_admin</code></td><td>System Administrator</td><td>ALL PRIVILEGES on project_ARMS.*</td></tr>
+      <tr><td><code>arms_lecturer</code></td><td>Lecturer</td><td>SELECT on all; INSERT/UPDATE on Attendance_Record and Student_Marks; EXECUTE on mark and attendance procedures</td></tr>
+      <tr><td><code>arms_to</code></td><td>Technical Officer</td><td>SELECT on User and Student; INSERT on Attendance_Record; EXECUTE on mark_attendance procedure</td></tr>
+      <tr><td><code>arms_student</code></td><td>Student</td><td>SELECT on grade summary, attendance summary, GPA, and Final_Mark views/tables only</td></tr>
+    </tbody>
+  </table>
+  <p class="table-caption">Table 4: MySQL User Accounts and Privileges</p>
+
+  <p>The student account is intentionally the most restricted: it is granted read access only to views and tables containing that student's own results. No direct access to peer records, attendance records of other students, or administrative tables is permitted. The technical officer account is restricted to attendance-related operations, consistent with the officer's operational remit.</p>
+</div>
+
+<!-- ══ CHAPTER 4 CONT – SAMPLE DATA ══ -->
+<div class="page">
+  <h2 id="impl-data">4.5 Sample Data</h2>
+  <p>A comprehensive sample dataset was generated and loaded via <code>03_sample_data.sql</code> to enable schema validation and functional testing. The dataset spans the Level I Semester II 2024/2025 academic cohort of the ICT department. Table 5 summarises the dataset statistics.</p>
+
+  <table id="tab5">
+    <thead>
+      <tr><th>Entity</th><th>Count</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Users (total)</td><td>27</td><td>Students (15), Lecturers (5), TOs (5), Dean (1), Admin (1)</td></tr>
+      <tr><td>Students</td><td>15</td><td>10 active (batch 2024/25), 5 repeat students</td></tr>
+      <tr><td>Course Units</td><td>9</td><td>ENG1212, ICT1212, ICT1222, ICT1232, ICT1242, ICT1252, ICT1261, TCS1212, TMS1233</td></tr>
+      <tr><td>Sessions</td><td>195</td><td>15 weeks × 13 session streams across 9 courses</td></tr>
+      <tr><td>Attendance Records</td><td>&gt;4,000</td><td>Full records for ICT1212 and ICT1222; representative for others</td></tr>
+      <tr><td>Assignments (CA items)</td><td>22</td><td>Assignments and tests across all 9 courses</td></tr>
+      <tr><td>Student Marks Records</td><td>132</td><td>6 students × 22 assignment items</td></tr>
+      <tr><td>Medical Records</td><td>3</td><td>2 approved, 1 pending</td></tr>
+      <tr><td>Eligibility Records</td><td>135</td><td>15 students × 9 courses; student 005 barred from 3 courses</td></tr>
+      <tr><td>Final Mark Records</td><td>135</td><td>Grades A+ through X; repeat students capped at C per UGC 12-2024</td></tr>
+    </tbody>
+  </table>
+  <p class="table-caption">Table 5: Sample Dataset Statistics</p>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  <div class="note">
+    <strong>Note on Sample Data Creation:</strong> The sample data contained in <code>03_sample_data.sql</code> was created and validated by the designated group member (TG/2024/2120). The dataset covers user records (names, NICs, addresses, emails), session schedules, attendance patterns designed to test eligibility boundary conditions, assignment marks calibrated to represent a range of student performance levels (high, average, low, repeat, and barred profiles), and GPA values, ensuring domain correctness, referential integrity compliance, and realistic representation of academic scenarios.
+  </div>
+
+  <p>Several specific test scenarios were embedded in the data to exercise system correctness:</p>
+  <ul>
+    <li><strong>Eligibility boundary condition:</strong> Student ICT/2024/005 was assigned attendance records yielding approximately 53% attendance across ICT1212, ICT1222, and ENG1212, triggering an <code>attendance_eligibility = 0</code> flag and a final grade of 'X' (barred) for those courses.</li>
+    <li><strong>Repeat student grade cap:</strong> Five repeat students were assigned final marks in the passing range but their grades were capped at 'C+' or below, consistent with UGC Circular 12-2024 regulations on repeat examination grading.</li>
+    <li><strong>Medical certificate coverage:</strong> Three medical records were inserted, including one with a pending approval status, to test the <code>ApproveMedical</code> procedure and the <code>vw_medical_status</code> view.</li>
+    <li><strong>TO officer audit trail:</strong> Attendance records were distributed across all five technical officers, enabling the <code>vw_attendance_full</code> view to demonstrate multi-officer attribution.</li>
+  </ul>
+</div>
+
+<!-- ══ CHAPTER 5: RESULTS AND DISCUSSION – PAGE 1 ══ -->
+<div class="page" id="chapter5">
+  <h1>5. Results and Discussion</h1>
+  <p>The ARMS database was successfully created and populated without constraint violations, confirming that the schema design correctly models the domain. All foreign key relationships were verified during data insertion; the deferred-constraint approach (using <code>ALTER TABLE</code> after initial table creation) successfully resolved the circular dependency between <em>Department</em>, <em>Dean</em>, and <em>Admin</em>.</p>
+
+  <h2>5.1 Schema and Integrity</h2>
+  <p>Twenty relations were created with a total of thirty-three foreign key constraints. No orphan records were introduced during sample data insertion, confirming referential integrity enforcement. The <code>ENUM</code> constraint on <em>Attendance_Record.status</em> rejected any values other than 'Present' and 'Absent' as intended. The composite primary keys on junction tables correctly prevented duplicate enrolments and duplicate attendance entries.</p>
+
+  <h2>5.2 Stored Procedure Behaviour</h2>
+  <p>All fourteen stored procedures were created without syntax errors. The <code>AddStudent</code> procedure correctly performed an atomic two-table insert using <code>LAST_INSERT_ID()</code> to propagate the generated <code>user_id</code> into the <em>Student</em> table. The <code>CheckAttendanceEligibility</code> procedure correctly evaluated the 80% threshold, returning an eligibility flag of 0 for student ICT/2024/005 and 1 for all other students in the tested courses.</p>
+
+  <h2>5.3 View Correctness</h2>
+  <p>The <code>vw_low_attendance</code> view successfully identified student ICT/2024/005 across three course streams with attendance percentages in the range of 47–54%. The <code>vw_top_performers</code> view correctly returned student ICT/2024/009 (SGPA 3.90) across multiple courses with grades of A and A+, while excluding all entries with grade 'X'. The <code>vw_course_result_sheet</code> view produced a correctly ordered result sheet per course, including eligibility flags and pass/fail/barred status labels.</p>
+
+</div>
+
+<!-- ══ CHAPTER 5 CONT – Objectives Achievement Table ══ -->
+<div class="page">
+  <h2>5.4 Access Control Verification</h2>
+  <p>The four user accounts were created with distinct privilege profiles. The <code>arms_student</code> account was confirmed to have no direct SELECT access to base tables such as <em>Attendance_Record</em> or <em>Student_Marks</em>, and was limited to the four specifically granted view and table SELECT permissions. This satisfies the privacy requirements of the system, preventing students from accessing peer records.</p>
+  <table id="tab6">
+    <thead>
+      <tr><th>Objective</th><th>Target</th><th>Achieved</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Normalised schema (3NF)</td><td>20 relations</td><td>20 relations</td><td>&#10003; Met</td></tr>
+      <tr><td>Referential integrity</td><td>All FK constraints</td><td>33 FK constraints</td><td>&#10003; Met</td></tr>
+      <tr><td>Role-based user accounts</td><td>4 accounts</td><td>4 accounts</td><td>&#10003; Met</td></tr>
+      <tr><td>Stored procedures</td><td>14 procedures</td><td>19 procedures</td><td>&#10003; Exceeded</td></tr>
+      <tr><td>Database views</td><td>12 views</td><td>16 views</td><td>&#10003; Exceeded</td></tr>
+      <tr><td>Sample dataset</td><td>Representative data</td><td>15 students, 195 sessions, 4000+ records</td><td>&#10003; Met</td></tr>
+    </tbody>
+  </table>
+  <p class="table-caption">Table 6: Project Objectives Achievement Summary</p>
+</div>
+
+<!-- ══ CHAPTER 6: CONCLUSION ══ -->
+<div class="page" id="chapter6">
+  <h1>6. Conclusion</h1>
+  <p>This project successfully designed, implemented, and validated a relational database back-end for the Attendance and Results Management System (ARMS) of the ICT department at the Faculty of Technology, University of Ruhuna. All six project objectives were met or exceeded. A twenty-relation normalised schema was implemented in MySQL with thirty-three foreign key constraints, ensuring referential integrity across all entity relationships. Nineteen stored procedures encapsulate the core business logic for student management, attendance recording, marks entry, eligibility determination, and medical certificate processing. Sixteen views provide pre-computed perspectives for attendance monitoring, eligibility reporting, marks analysis, and final result sheet generation. Four role-based MySQL user accounts implement the principle of least privilege for system administrators, lecturers, technical officers, and students. A comprehensive sample dataset of fifteen students, nine course units, 195 sessions, and several thousand attendance and marks records was generated and validated to confirm schema correctness and system behaviour across a range of academic scenarios, including attendance eligibility boundary conditions, repeat student grade capping, and medical certificate approval workflows.</p>
+  <p>The ARMS database demonstrates that a well-normalised relational schema, complemented by disciplined access control design and reusable stored procedure logic, provides a robust and maintainable foundation upon which a complete academic records management system can be built.</p>
+
+  <h2 id="limitations">6.1 Limitations</h2>
+  <ul>
+    <li><strong>Static eligibility computation:</strong> Eligibility flags in the <em>Eligibility</em> table are populated by explicit insert or update operations (via the <code>UpdateEligibilityStatus</code> procedure), rather than being computed dynamically from current attendance records. This introduces a risk of staleness if attendance records are modified after eligibility has been assessed.</li>
+    <li><strong>No application layer:</strong> The current deliverable is a database back-end only. No user interface, API, or authentication layer is included. Row-level security to ensure students can only view their own records is not enforced at the database level, relying instead on application-layer filtering.</li>
+  </ul>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+
+
+
+  <ul>
+    
+    
+    
+    
+    <li><strong>Partial attendance dataset:</strong> Full attendance records were generated only for ICT1212 Theory, ICT1212 Practical, and ICT1222 Practical sessions. Representative records were included for student ICT/2024/001 and ICT/2024/005 across remaining courses. A complete fifteen-student attendance dataset across all 195 sessions was beyond the scope of this project phase.</li>
+    <li><strong>Marks coverage:</strong> Continuous assessment marks were populated for six of the fifteen students. The remaining nine students have no marks data, which limits the utility of CA-related views for those records.</li>
+    <li><strong>Password security:</strong> Plain-text passwords are used in the <code>02_users.sql</code> script for illustrative purposes. A production deployment would require credential management using MySQL's authentication plugin and environment variable injection.</li>
+  </ul>
+
+ 
+  <h2 id="future">6.2 Future Work</h2>
+  <p>The following directions are recommended for future development of the ARMS system:</p>
+  <ul>
+    <li><strong>Triggers for automatic eligibility update:</strong> Database triggers could be defined on <em>Attendance_Record</em> to automatically recompute and update the <em>Eligibility</em> table whenever an attendance record is inserted or updated, eliminating the risk of stale eligibility data.</li>
+    <li><strong>Application-layer development:</strong> A RESTful API or web application could be built atop the ARMS database to provide user-friendly interfaces for each actor category, with session-based authentication and row-level data filtering.</li>
+    <li><strong>Multi-department and multi-semester support:</strong> The schema supports multiple departments through the existing <em>Department</em> relation and multiple academic years through the <code>academic_year</code> field in <em>Student_Course_Unit</em>. Expanding the sample data to demonstrate multi-department operation would validate this scalability.</li>
+    <li><strong>Notification system:</strong> An automated notification mechanism could be integrated to alert students approaching the 80% attendance threshold, or to notify administrators of pending medical approvals.</li>
+    <li><strong>Audit logging:</strong> A dedicated audit log table or MySQL audit plugin configuration could be introduced to record all data modification events with timestamps and user identifiers for accountability purposes.</li>
+  </ul>
+</div>
+
+<!-- ══ REFERENCES ══ -->
+<div class="page" id="references">
+  <h1>References</h1>
+  <ol class="ref-list">
+    <li>R. Elmasri and S. B. Navathe, <em>Fundamentals of Database Systems</em>, 7th ed. Hoboken, NJ: Pearson, 2016.</li>
+    <li>C. J. Date, <em>An Introduction to Database Systems</em>, 8th ed. Boston, MA: Addison-Wesley, 2004.</li>
+    <li>Oracle Corporation, "MySQL 8.0 Reference Manual," Oracle, 2024. [Online]. Available: https://dev.mysql.com/doc/refman/8.0/en/ [Accessed: May 2025].</li>
+    <li>Oracle Corporation, "MySQL 8.0 Reference Manual – Stored Procedures," Oracle, 2024. [Online]. Available: https://dev.mysql.com/doc/refman/8.0/en/stored-programs-defining.html [Accessed: May 2025].</li>
+    <li>Oracle Corporation, "MySQL 8.0 Reference Manual – Views," Oracle, 2024. [Online]. Available: https://dev.mysql.com/doc/refman/8.0/en/create-view.html [Accessed: May 2025].</li>
+    <li>Oracle Corporation, "MySQL 8.0 Reference Manual – Access Control," Oracle, 2024. [Online]. Available: https://dev.mysql.com/doc/refman/8.0/en/access-control.html [Accessed: May 2025].</li>
+    <li>University Grants Commission of Sri Lanka, "UGC Circular No. 12-2024: Regulations Governing Repeat Examinations," Colombo: UGC, 2024.</li>
+    <li>A. Silberschatz, H. F. Korth, and S. Sudarshan, <em>Database System Concepts</em>, 7th ed. New York: McGraw-Hill, 2019.</li>
+  </ol>
+</div>
+
+<!-- ══ APPENDIX A – PROJECT FILE STRUCTURE ══ -->
+<div class="page" id="appendices">
+  <h1>Appendices</h1>
+
+  <h2>Appendix A: Project File Structure</h2>
+  <p>The ARMS project repository is organised as follows:</p>
+
+  <div class="file-tree">
+    <div class="tree-root">project_ARMS/</div>
+    <div style="margin-left:16px;">
+      <div class="tree-dir">├── sql/</div>
+      <div style="margin-left:24px;">
+        <div><span class="tree-file">├── 01_schema.sql</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="tree-comment">— DDL: all CREATE TABLE and ALTER TABLE statements</span></div>
+        <div><span class="tree-file">├── 02_users.sql</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="tree-comment">— MySQL user creation and GRANT statements</span></div>
+        <div><span class="tree-file">├── 03_sample_data.sql</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="tree-comment">— DML: sample data for all 20 tables</span></div>
+        <div class="tree-dir">└── procedures/</div>
+        <div style="margin-left:24px;">
+          <div><span class="tree-file">├── 01_student_procedures.sql</span> &nbsp;&nbsp; <span class="tree-comment">— AddStudent, UpdateStudentStatus, GetStudentDetails</span></div>
+          <div><span class="tree-file">├── 02_attendance_procedures.sql</span> <span class="tree-comment">— MarkAttendance, GetStudentAttendance, CalculateAttendancePct</span></div>
+          <div><span class="tree-file">├── 03_marks_procedures.sql</span> &nbsp;&nbsp;&nbsp;&nbsp; <span class="tree-comment">— AddAssignmentMarks, UpdateAssignmentMarks, GetStudentMarks, CalculateCAMarks</span></div>
+          <div><span class="tree-file">├── 04_course_procedures.sql</span> &nbsp;&nbsp;&nbsp; <span class="tree-comment">— EnrollStudentInCourse, GetStudentCourses, GetCourseStudents</span></div>
+          <div><span class="tree-file">├── 05_eligibility_procedures.sql</span> <span class="tree-comment">— CheckAttendanceEligibility, UpdateEligibilityStatus, GetStudentEligibility</span></div>
+          <div><span class="tree-file">└── 06_medical_procedures.sql</span> &nbsp;&nbsp; <span class="tree-comment">— SubmitMedical, ApproveMedical, GetStudentMedicals</span></div>
+        </div>
+        <div class="tree-dir">└── views/</div>
+        <div style="margin-left:24px;">
+          <div><span class="tree-file">├── 01_attendance_views.sql</span> &nbsp;&nbsp;&nbsp; <span class="tree-comment">— 8 attendance-related views</span></div>
+          <div><span class="tree-file">└── 02_marks_views.sql</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="tree-comment">— 8 marks and results-related views</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TABLE OF CONTENTS ══ -->
+<div class="page">
+  <h2>Appendix B: Group Contribution Summary</h2>
+  <table>
+    <thead>
+      <tr><th>Index No.</th><th>Assigned Artefact</th><th>Files Responsible For</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>TG/2024/2073</td><td>Views &amp; Stored Procedures</td><td>sql/views/01_attendance_views.sql, sql/views/02_marks_views.sql, sql/procedures/01–06_*.sql</td></tr>
+      <tr><td>TG/2024/2100</td><td>Database Schema</td><td>sql/01_schema.sql</td></tr>
+      <tr><td>TG/2024/2106</td><td>User Accounts &amp; Privileges</td><td>sql/02_users.sql</td></tr>
+      <tr><td>TG/2024/2120</td><td>Sample Data</td><td>sql/03_sample_data.sql</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+</body>
+</html>
