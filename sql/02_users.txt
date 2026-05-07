@@ -1,0 +1,61 @@
+
+MariaDB [project_ARMS]> -- 1. System Admin (Full Control)
+MariaDB [project_ARMS]> CREATE USER 'arms_admin'@'localhost' IDENTIFIED BY 'Admin@123';
+Query OK, 0 rows affected (0.008 sec)
+
+MariaDB [project_ARMS]> GRANT ALL PRIVILEGES ON project_ARMS.* TO 'arms_admin'@'localhost';
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> -- 2. Lecturer (Manage Marks and Attendance)
+MariaDB [project_ARMS]> CREATE USER 'arms_lecturer'@'localhost' IDENTIFIED BY 'Lecturer@456';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT SELECT ON project_ARMS.* TO 'arms_lecturer'@'localhost';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT INSERT, UPDATE ON project_ARMS.Attendance_Record TO 'arms_lecturer'@'localhost';
+Query OK, 0 rows affected (0.002 sec)
+
+MariaDB [project_ARMS]> GRANT INSERT, UPDATE ON project_ARMS.Student_Marks TO 'arms_lecturer'@'localhost';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT EXECUTE ON PROCEDURE project_ARMS.add_marks TO 'arms_lecturer'@'localhost'; 
+ERROR 1305 (42000): FUNCTION or PROCEDURE add_marks does not exist
+MariaDB [project_ARMS]> GRANT EXECUTE ON PROCEDURE project_ARMS.mark_attendance TO 'arms_lecturer'@'localhost'; 
+ERROR 1305 (42000): FUNCTION or PROCEDURE mark_attendance does not exist
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> -- 3. Technical Officer (Attendance Tracking)
+MariaDB [project_ARMS]> CREATE USER 'arms_to'@'localhost' IDENTIFIED BY 'TO_Officer@789';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT SELECT ON project_ARMS.User TO 'arms_to'@'localhost';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT SELECT ON project_ARMS.Student TO 'arms_to'@'localhost';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT INSERT ON project_ARMS.Attendance_Record TO 'arms_to'@'localhost';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT EXECUTE ON PROCEDURE project_ARMS.mark_attendance TO 'arms_to'@'localhost'; 
+ERROR 1305 (42000): FUNCTION or PROCEDURE mark_attendance does not exist
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> -- 4. Student (Read-only access to own data)
+MariaDB [project_ARMS]> CREATE USER 'arms_student'@'localhost' IDENTIFIED BY 'Student@000';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT SELECT ON project_ARMS.student_grade_summary TO 'arms_student'@'localhost'; 
+ERROR 1146 (42S02): Table 'project_arms.student_grade_summary' doesn't exist
+MariaDB [project_ARMS]> GRANT SELECT ON project_ARMS.student_attendance_summary TO 'arms_student'@'localhost'; 
+ERROR 1146 (42S02): Table 'project_arms.student_attendance_summary' doesn't exist
+MariaDB [project_ARMS]> GRANT SELECT ON project_ARMS.GPA TO 'arms_student'@'localhost';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]> GRANT SELECT ON project_ARMS.Final_Mark TO 'arms_student'@'localhost';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.001 sec)
