@@ -1,0 +1,85 @@
+MariaDB [project_ARMS]> -- =============================================
+MariaDB [project_ARMS]> -- Marks Management Procedures
+MariaDB [project_ARMS]> -- =============================================
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> USE project_ARMS;
+Database changed
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> DELIMITER $$
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> -- Procedure 1: Add Assignment Marks
+MariaDB [project_ARMS]> CREATE PROCEDURE AddAssignmentMarks(
+    ->     IN p_reg_no VARCHAR(20),
+    ->     IN p_assignment_id INT,
+    ->     IN p_mark_obtained DECIMAL(5,2),
+    ->     IN p_is_medical TINYINT(1)
+    -> )
+    -> BEGIN
+    ->     INSERT INTO Student_Marks (reg_no, Assignment_id, mark_obtained, is_medical)
+    ->     VALUES (p_reg_no, p_assignment_id, p_mark_obtained, p_is_medical);
+    ->
+    ->     SELECT 'Marks added successfully' AS message;
+    -> END $$
+Query OK, 0 rows affected (0.006 sec)
+
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> -- Procedure 2: Update Assignment Marks
+MariaDB [project_ARMS]> CREATE PROCEDURE UpdateAssignmentMarks(
+    ->     IN p_reg_no VARCHAR(20),
+    ->     IN p_assignment_id INT,
+    ->     IN p_mark_obtained DECIMAL(5,2)
+    -> )
+    -> BEGIN
+    ->     UPDATE Student_Marks
+    ->     SET mark_obtained = p_mark_obtained
+    ->     WHERE reg_no = p_reg_no AND Assignment_id = p_assignment_id;
+    ->
+    ->     SELECT 'Marks updated successfully' AS message;
+    -> END $$
+Query OK, 0 rows affected (0.004 sec)
+
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> -- Procedure 3: Get Student Marks for Course
+MariaDB [project_ARMS]> CREATE PROCEDURE GetStudentMarksForCourse(
+    ->     IN p_reg_no VARCHAR(20),
+    ->     IN p_course_code VARCHAR(20)
+    -> )
+    -> BEGIN
+    ->     SELECT
+    ->         a.Assignment_name,
+    ->         a.type,
+    ->         a.max_marks,
+    ->         sm.mark_obtained,
+    ->         sm.is_medical,
+    ->         ROUND((sm.mark_obtained / a.max_marks) * 100, 2) AS percentage
+    ->     FROM Assignment a
+    ->     LEFT JOIN Student_Marks sm
+    ->         ON a.Assignment_id = sm.Assignment_id AND sm.reg_no = p_reg_no
+    ->     WHERE a.course_code = p_course_code
+    ->     ORDER BY a.Assignment_id;
+    -> END $$
+Query OK, 0 rows affected (0.003 sec)
+
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> -- Procedure 4: Calculate Total CA Marks
+MariaDB [project_ARMS]> CREATE PROCEDURE CalculateTotalCAMarks(
+    ->     IN p_reg_no VARCHAR(20),
+    ->     IN p_course_code VARCHAR(20)
+    -> )
+    -> BEGIN
+    ->     SELECT
+    ->         p_reg_no AS reg_no,
+    ->         p_course_code AS course_code,
+    ->         SUM(sm.mark_obtained) AS total_marks_obtained,
+    ->         SUM(a.max_marks) AS total_max_marks,
+    ->         ROUND((SUM(sm.mark_obtained) / SUM(a.max_marks)) * 100, 2) AS ca_percentage
+    ->     FROM Assignment a
+    ->     LEFT JOIN Student_Marks sm
+    ->         ON a.Assignment_id = sm.Assignment_id AND sm.reg_no = p_reg_no
+    ->     WHERE a.course_code = p_course_code;
+    -> END $$
+Query OK, 0 rows affected (0.003 sec)
+
+MariaDB [project_ARMS]>
+MariaDB [project_ARMS]> DELIMITER ;
+MariaDB [project_ARMS]>
