@@ -606,9 +606,10 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 
 -- Medical Records
 INSERT INTO Medical (approval, submitted_date, session_id, department_id, reg_no) VALUES
-(1, '2025-01-23', 3, 1, 'ICT/2022/011'),   -- medical_id = 1
+(1, '2025-01-23', 3, 1, 'ICT/2022/011');   -- medical_id = 1
 -- pending
 -- approved
+-- : added comment solved problem
 
 INSERT INTO Medical_Cover_Date (medical_id, covers_date) VALUES
 (1, '2025-01-20'),   -- session 3
