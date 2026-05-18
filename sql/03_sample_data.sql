@@ -606,7 +606,9 @@ INSERT INTO Attendance_Record (session_id, reg_no, status, FR_to_id) VALUES
 
 -- Medical Records
 INSERT INTO Medical (medical_id,approval, submitted_date, session_id, department_id, reg_no) VALUES
-(1,1, '2025-01-23', 3, 1, 'ICT/2022/011');   -- medical_id = 1
+(1,1, '2025-01-23', 3, 1, 'ICT/2022/011'),
+(2,1, '2025-02-09', 4, 1, 'ICT/2022/012'),
+(3,1, '2025-02-25', 7, 1, 'ICT/2023/014');    -- medical_id = 1
 -- pending
 -- approved
 -- : added comment solved problem
